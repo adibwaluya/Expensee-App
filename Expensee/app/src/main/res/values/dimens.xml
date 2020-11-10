@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius">30dp</dimen>
+    <dimen name="size_twenty">20dp</dimen>
+    <dimen name="size_twoHundred">200dp</dimen>
+    <dimen name="size_eight">8dp</dimen>
+    <dimen name="size_ten">10dp</dimen>
+</resources>
