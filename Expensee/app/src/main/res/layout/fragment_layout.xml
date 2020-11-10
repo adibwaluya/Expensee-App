@@ -23,6 +23,7 @@
                 android:src="@drawable/expensee"/>
 
             <EditText
+                android:id="@+id/user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/size_twenty"
@@ -30,10 +31,11 @@
                 android:drawableStart="@drawable/ic_person"
                 android:drawablePadding="@dimen/size_twenty"
                 android:hint="@string/email"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:padding="@dimen/size_eight"/>
 
             <EditText
+                android:id="@+id/user_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/size_twenty"
@@ -53,6 +55,35 @@
                 android:padding="@dimen/size_eight"
                 android:layout_gravity="end"
                 android:text="@string/forgot_password" />
+
+            <Button
+                android:id="@+id/logIn_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_ten"
+                android:background="@drawable/button_background"
+                android:text="@string/log_in_button"
+                android:textAllCaps="false"
+                android:textColor="@color/design_default_color_background"
+                android:textSize="@dimen/text_twentyOne"/>
+
+            <Button
+                android:id="@+id/signUp_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_ten"
+                android:background="@drawable/button_background"
+                android:text="@string/sign_up_button"
+                android:textAllCaps="false"
+                android:textColor="@color/design_default_color_background"
+                android:textSize="@dimen/text_twentyOne" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>
     </ScrollView>

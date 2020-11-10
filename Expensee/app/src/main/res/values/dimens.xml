@@ -5,4 +5,5 @@
     <dimen name="size_twoHundred">200dp</dimen>
     <dimen name="size_eight">8dp</dimen>
     <dimen name="size_ten">10dp</dimen>
+    <dimen name="text_twentyOne">21sp</dimen>
 </resources>
