@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_aHundred"
+        android:layout_marginTop="@dimen/size_fifty"
+        android:layout_marginEnd="@dimen/size_aHundred"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintVertical_bias="0.068" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginStart="@dimen/size_eighty"
+        android:layout_marginTop="@dimen/text_twentyOne"
+        android:layout_marginEnd="@dimen/size_eighty"
+        android:background="@drawable/floating_button"
+        android:text="@string/add"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/size_fifty"
+        android:layout_marginEnd="@dimen/size_fifty">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="@dimen/spacing_onePointTwo"
+            android:text="\n\nI love fish.
+\n\nThe kind that is alive and swims around in an aquarium or river, or a lake, and definitely the ocean.
+\nFun fact is that I have several aquariums and also a river.
+\n\nI like eating fish, too. Raw fish. Grilled fish. Smoked fish. Poached fish - not so much.
+\nAnd sometimes I even go fishing.
+\nAnd even less sometimes, I actually catch something.
+\n\nOnce, when I was camping in Canada, and very hungry, I even caught a large salmon with my hands.
+\n\nI\'ll be happy to teach you how to make your own aquarium.
+
+\n\nI love fish.
+\n\nThe kind that is alive and swims around in an aquarium or river, or a lake, and definitely the ocean.
+\nFun fact is that I have several aquariums and also a river.
+\n\nI like eating fish, too. Raw fish. Grilled fish. Smoked fish. Poached fish - not so much.
+\nAnd sometimes I even go fishing.
+\nAnd even less sometimes, I actually catch something.
+\n\nOnce, when I was camping in Canada, and very hungry, I even caught a large salmon with my hands.
+\n\nI\'ll be happy to teach you how to make your own aquarium." />
+    </ScrollView>
+
+</LinearLayout>

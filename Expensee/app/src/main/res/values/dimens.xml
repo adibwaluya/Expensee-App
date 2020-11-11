@@ -6,4 +6,11 @@
     <dimen name="size_eight">8dp</dimen>
     <dimen name="size_ten">10dp</dimen>
     <dimen name="text_twentyOne">21sp</dimen>
+    <dimen name="size_fourty">40dp</dimen>
+    <dimen name="size_fifty">50dp</dimen>
+    <dimen name="size_seventy">70dp</dimen>
+    <dimen name="size_eighty">80dp</dimen>
+    <dimen name="size_aHundred">100dp</dimen>
+    <dimen name="size_thirty">30dp</dimen>
+    <item name="spacing_onePointTwo" type="dimen" format="float">1.2</item>
 </resources>
