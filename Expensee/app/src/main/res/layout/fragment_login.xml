@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_twenty"
@@ -29,11 +28,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_twenty"
             android:layout_marginEnd="@dimen/size_twenty"
-            android:drawableStart="@drawable/ic_person"
+            android:drawableStart="@drawable/ic_email_logo"
             android:drawablePadding="@dimen/size_twenty"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:padding="@dimen/size_eight"/>
+            android:padding="@dimen/size_eight" />
 
         <EditText
             android:id="@+id/user_password"
@@ -42,7 +41,7 @@
             android:layout_marginStart="@dimen/size_twenty"
             android:layout_marginTop="@dimen/size_ten"
             android:layout_marginEnd="@dimen/size_twenty"
-            android:drawableStart="@drawable/ic_lock"
+            android:drawableStart="@drawable/ic_password_logo"
             android:drawablePadding="@dimen/size_twenty"
             android:hint="@string/password"
             android:inputType="textPassword"
