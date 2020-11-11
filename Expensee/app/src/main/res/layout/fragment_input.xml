@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/transaction_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_aHundred"
+        android:layout_marginTop="@dimen/size_aHundred"
+        android:layout_marginEnd="@dimen/size_aHundred"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/button_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_eighty"
+        android:layout_marginTop="@dimen/text_twentyOne"
+        android:layout_marginEnd="@dimen/size_eighty"
+        android:background="@drawable/floating_button"
+        android:text="@string/plus_minus"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_eighty"
+        android:layout_marginTop="@dimen/size_thirty"
+        android:text="@string/info"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_twentyOne"
+        android:layout_marginStart="@dimen/size_eighty"
+        android:layout_marginEnd="@dimen/size_eighty"/>
+
+</LinearLayout>

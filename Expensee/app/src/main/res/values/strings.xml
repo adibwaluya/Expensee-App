@@ -6,6 +6,8 @@
     <string name="log_in_button">Log in</string>
     <string name="sign_up_button">Sign up</string>
     <string name="add">+</string>
-    <string name="test">Hi, my name is Aleks. /nWorld
-    </string>
+    <string name="current_saldo">Current Saldo</string>
+    <string name="saldo">Current Saldo:</string>
+    <string name="plus_minus">+/-</string>
+    <string name="info">Information zur Zahlung</string>
 </resources>

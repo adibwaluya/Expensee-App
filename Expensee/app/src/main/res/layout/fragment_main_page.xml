@@ -6,12 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_fifty"
+        android:layout_marginTop="@dimen/size_seventy"
+        android:layout_marginEnd="@dimen/size_fifty"
+        android:text="@string/saldo"
+        android:textSize="30sp" />
+
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_aHundred"
-        android:layout_marginTop="@dimen/size_fifty"
+        android:layout_marginTop="@dimen/text_twentyOne"
         android:layout_marginEnd="@dimen/size_aHundred"
         android:ems="10"
         android:inputType="number" />
