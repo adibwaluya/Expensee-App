@@ -1,4 +1,4 @@
-package de.htwberlin.expensee.screen.mainpage
+package de.htwberlin.expensee.screen.input
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import de.htwberlin.expensee.R
-import de.htwberlin.expensee.databinding.FragmentMainPageBinding
+import de.htwberlin.expensee.databinding.FragmentInputBinding
 
-class MainPageFragment : Fragment() {
+class InputFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainPageBinding
+    private lateinit var binding: FragmentInputBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_main_page,
+            R.layout.fragment_input,
             container,
             false
         )

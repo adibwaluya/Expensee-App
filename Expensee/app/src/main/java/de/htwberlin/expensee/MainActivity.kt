@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: FragmentInputBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.fragment_input)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 }
