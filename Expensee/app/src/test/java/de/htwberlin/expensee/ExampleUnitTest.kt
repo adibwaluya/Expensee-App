@@ -1,4 +1,4 @@
-package com.HTWMobileAnwendung.expensee
+package de.htwberlin.expensee
 
 import org.junit.Test
 
