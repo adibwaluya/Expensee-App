@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,7 +13,11 @@
             android:layout_marginStart="@dimen/size_aHundred"
             android:layout_marginTop="@dimen/size_aHundred"
             android:layout_marginEnd="@dimen/size_aHundred"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="Betrag"
+            android:textAlignment="center"
+            />
 
         <Button
             android:id="@+id/button_two"
@@ -35,11 +40,24 @@
             android:textSize="24sp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="256dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_twentyOne"
             android:layout_marginStart="@dimen/size_eighty"
-            android:layout_marginEnd="@dimen/size_eighty"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/size_eighty"
+            android:background="@color/grey"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:visibility="visible"
+            tools:text="Ich habe das verdient!" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/dauerauftrag"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Dauerauftrag" />
 
     </LinearLayout>
 </layout>
