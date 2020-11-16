@@ -23,6 +23,11 @@ class UserLoginFragment : Fragment() {
             container,
             false
         )
+
+        binding.logInButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
+        }
+
         return binding.root
     }
 
