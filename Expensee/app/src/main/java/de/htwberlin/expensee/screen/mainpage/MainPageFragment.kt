@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
 
@@ -22,6 +23,11 @@ class MainPageFragment : Fragment() {
             container,
             false
         )
+
+        binding.inputButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
+        }
+
         return binding.root
     }
 }

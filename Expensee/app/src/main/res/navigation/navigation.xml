@@ -19,7 +19,11 @@
         android:id="@+id/mainPageFragment"
         android:name="de.htwberlin.expensee.screen.mainpage.MainPageFragment"
         android:label="MainPageFragment"
-        tools:layout="@layout/fragment_main_page"/>
+        tools:layout="@layout/fragment_main_page">
+        <action
+            android:id="@+id/action_mainPageFragment_to_inputFragment"
+            app:destination="@id/inputFragment" />
+    </fragment>
     <fragment
         android:id="@+id/inputFragment"
         android:name="de.htwberlin.expensee.screen.input.InputFragment"
