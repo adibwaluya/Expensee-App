@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_twenty"
+            android:layout_marginEnd="@dimen/size_twenty"
+            android:layout_marginTop="@dimen/size_ten"
+            android:orientation="vertical"
+            android:padding="@dimen/size_eight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/size_aHundred"
+                android:fontFamily="@font/alike_angular"
+                android:text="@string/reg"
+                android:textSize="@dimen/text_twentyFive" />
+            
+            <EditText
+                android:id="@+id/email_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_twenty"
+                android:layout_marginEnd="@dimen/size_twenty"
+                android:layout_marginTop="@dimen/size_ten"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/size_eight"
+                android:hint="@string/email"/>
+
+            <EditText
+                android:id="@+id/password_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginStart="@dimen/size_twenty"
+                android:layout_marginEnd="@dimen/size_twenty"
+                android:inputType="textPassword"
+                android:padding="@dimen/size_eight"
+                android:hint="@string/password"/>
+
+            <EditText
+                android:id="@+id/password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_twenty"
+                android:layout_marginEnd="@dimen/size_twenty"
+                android:ems="10"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_twenty"
+                android:layout_marginTop="@dimen/size_twenty"
+                android:layout_marginEnd="@dimen/size_twenty"
+                android:background="@drawable/button_background"
+                android:text="@string/register" />
+
+            <TextView
+                android:id="@+id/already_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_acc"
+                android:layout_marginTop="@dimen/size_twenty"
+                android:layout_gravity="center"/>
+            
+            <ProgressBar
+                android:visibility="invisible"
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
