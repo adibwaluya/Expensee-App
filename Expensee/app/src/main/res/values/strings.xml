@@ -12,4 +12,11 @@
     <string name="info">Information zur Zahlung</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_exptwo">Expensee is a platform which could help you to save all important income and expenses in your daily life.
+         \n\nEasy to use, your budget tracker is also safe and only accessible for you.</string>
+    <string name="reg">Please Register Yourself First!</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="already_acc">Already have an account?</string>
+    <string name="about">About</string>
 </resources>

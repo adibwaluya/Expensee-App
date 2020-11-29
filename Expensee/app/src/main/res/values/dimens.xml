@@ -15,5 +15,7 @@
     <dimen name="size_hundredFifty">150dp</dimen>
     <dimen name="size_thirtyFive">35sp</dimen>
     <dimen name="text_twentyFive">25sp</dimen>
+    <dimen name="size_fiftyFive">55dp</dimen>
+    <dimen name="text_thirtyTwo">32sp</dimen>
     <item name="spacing_onePointTwo" type="dimen" format="float">1.2</item>
 </resources>

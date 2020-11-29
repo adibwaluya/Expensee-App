@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/size_twoHundred"
+            android:layout_height="@dimen/size_twoHundred"
+            android:layout_marginTop="@dimen/size_fiftyFive"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/expensee"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/about"
+            android:textSize="@dimen/text_thirtyTwo"
+            android:layout_marginTop="@dimen/size_twenty"
+            android:fontFamily="@font/alike_angular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_fourty"
+            android:layout_marginEnd="@dimen/size_fourty"
+            android:layout_marginTop="@dimen/size_twenty"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/text_twentyOne"
+            android:fontFamily="serif"
+            android:text="Expensee is a platform which could help you to save all important income and expenses in your daily life.\n\nEasy to use, your budget tracker is also safe and only accessible for you."/>
+    </LinearLayout>
+</layout>
