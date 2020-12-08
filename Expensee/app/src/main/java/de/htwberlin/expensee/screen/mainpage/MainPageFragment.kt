@@ -32,8 +32,8 @@ class MainPageFragment : Fragment() {
         }
 
         setHasOptionsMenu(true)
-        drawerLayout = binding.drawerLayout
-        NavigationUI.setupWithNavController(binding.navView, findNavController())
+        //drawerLayout = binding.drawerLayout
+        //NavigationUI.setupWithNavController(binding.navView, findNavController())
         return binding.root
     }
 
