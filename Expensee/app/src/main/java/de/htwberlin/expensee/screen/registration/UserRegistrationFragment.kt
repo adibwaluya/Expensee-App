@@ -1,33 +1,31 @@
 package de.htwberlin.expensee.screen.registration
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseUser
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentUserRegistrationBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [UserRegistrationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class UserRegistrationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     private lateinit var binding: FragmentUserRegistrationBinding
+    private lateinit var viewModel: UserRegistrationViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
@@ -37,29 +35,27 @@ class UserRegistrationFragment : Fragment() {
             false
         )
 
-        binding.alreadyAccount.setOnClickListener { view: View ->
-            this.findNavController().navigate(R.id.action_userRegistrationFragment_to_userLoginFragment)
-        }
-        return binding.root
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UserRegistrationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UserRegistrationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        // TODO: Move this to onCreate (probably)
+        viewModel = ViewModelProvider(this).get(UserRegistrationViewModel::class.java)
+        viewModel.getUserMutableLiveData.observe(viewLifecycleOwner, Observer<FirebaseUser>() {
+            fun onChanged(firebaseUser: FirebaseUser) {
+                if(firebaseUser != null) {
+                    Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show()
                 }
             }
+        })
+
+        binding.userRegistrationViewModel = viewModel
+        binding.lifecycleOwner = this
+
+        binding.registerButton.setOnClickListener {
+            var email: String? = null
+            var password: String? = null
+
+            if (email!!.isNotEmpty() && password!!.isNotEmpty()) {
+                viewModel.register(email, password)
+            }
+        }
+        return binding.root
     }
 }
