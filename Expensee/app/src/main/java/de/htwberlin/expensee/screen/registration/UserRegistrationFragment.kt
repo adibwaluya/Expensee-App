@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentUserRegistrationBinding
@@ -16,11 +17,20 @@ import de.htwberlin.expensee.databinding.FragmentUserRegistrationBinding
 class UserRegistrationFragment : Fragment() {
 
     private lateinit var binding: FragmentUserRegistrationBinding
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var viewModel: UserRegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // TODO: Move this to onCreate (probably)
+        viewModel = ViewModelProvider(this).get(UserRegistrationViewModel::class.java)
+        viewModel.getUserMutableLiveData.observe(this,
+            { firebaseUser ->
+                if(firebaseUser != null) {
+                    Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show()
+                }
+            })
     }
 
     override fun onCreateView(
@@ -34,16 +44,6 @@ class UserRegistrationFragment : Fragment() {
             container,
             false
         )
-
-        // TODO: Move this to onCreate (probably)
-        viewModel = ViewModelProvider(this).get(UserRegistrationViewModel::class.java)
-        viewModel.getUserMutableLiveData.observe(viewLifecycleOwner, Observer<FirebaseUser>() {
-            fun onChanged(firebaseUser: FirebaseUser) {
-                if(firebaseUser != null) {
-                    Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
 
         binding.userRegistrationViewModel = viewModel
         binding.lifecycleOwner = this
