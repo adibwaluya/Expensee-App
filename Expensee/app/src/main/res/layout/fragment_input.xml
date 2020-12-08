@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="inputViewModel"
+            type="de.htwberlin.expensee.screen.input.InputViewModel" />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +20,7 @@
             android:layout_marginEnd="@dimen/size_aHundred"
             android:inputType="numberDecimal"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            tools:text="Betrag"
+            android:text="@{@string/addEuro(inputViewModel.inputValue)}"
             android:textAlignment="center"
             />
 
@@ -29,7 +34,8 @@
             android:background="@drawable/input_button"
             android:text="@string/plus_minus"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:onClick="@{() -> inputViewModel.setValue()}"/> <!-- TODO: change function -->
 
         <TextView
             android:layout_width="wrap_content"

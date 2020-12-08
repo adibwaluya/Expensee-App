@@ -10,4 +10,5 @@
     <color name="floatingButton">#0077BE</color>
     <color name="colorAccent">#0077BE</color>
     <color name="grey">#808080</color>
+    <color name="colornav">#808080</color>
 </resources>

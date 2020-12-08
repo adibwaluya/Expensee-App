@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -15,6 +16,7 @@ class MainPageFragment : Fragment() {
 
     private lateinit var binding: FragmentMainPageBinding
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var viewModel: MainPageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +29,11 @@ class MainPageFragment : Fragment() {
             false
         )
 
+        // ViewModel
+        viewModel = ViewModelProvider(this).get(MainPageViewModel::class.java)
+        binding.mainPageViewModel = viewModel
+        binding.lifecycleOwner = this
+
         binding.inputButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
@@ -35,6 +42,8 @@ class MainPageFragment : Fragment() {
         //drawerLayout = binding.drawerLayout
         //NavigationUI.setupWithNavController(binding.navView, findNavController())
         return binding.root
+
+        // TODO: Add observer for finish event?
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

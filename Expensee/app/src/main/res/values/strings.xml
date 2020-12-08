@@ -20,4 +20,7 @@
     <string name="already_acc">Already have an account?</string>
     <string name="about">About</string>
     <string name="mainPage">Main Page</string>
+    
+    <!-- String methods -->
+    <string name="addEuro">%1$f €</string>
 </resources>
