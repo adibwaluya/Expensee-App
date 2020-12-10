@@ -20,9 +20,9 @@
     <string name="already_acc">Already have an account?</string>
     <string name="about">About</string>
     <string name="mainPage">Main Page</string>
-    
-    <!-- String methods -->
-    <string name="addEuro">%1$f €</string>
     <string name="Log_out">Log Out</string>
     <string name="open_data_button">Open Data</string>
+
+    <!-- String methods -->
+    <string name="addEuro">%1$f €</string>
 </resources>
