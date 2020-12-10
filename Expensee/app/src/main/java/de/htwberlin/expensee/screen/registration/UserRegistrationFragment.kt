@@ -24,6 +24,7 @@ class UserRegistrationFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         // TODO: Move this to onCreate (probably)
+        /*
         viewModel = ViewModelProvider(this).get(UserRegistrationViewModel::class.java)
         viewModel.getUserMutableLiveData.observe(this,
             { firebaseUser ->
@@ -31,6 +32,8 @@ class UserRegistrationFragment : Fragment() {
                     Toast.makeText(activity, "User Created", Toast.LENGTH_SHORT).show()
                 }
             })
+
+         */
     }
 
     override fun onCreateView(
@@ -48,6 +51,7 @@ class UserRegistrationFragment : Fragment() {
         binding.userRegistrationViewModel = viewModel
         binding.lifecycleOwner = this
 
+        /*
         binding.registerButton.setOnClickListener {
             var email: String? = null
             var password: String? = null
@@ -56,6 +60,8 @@ class UserRegistrationFragment : Fragment() {
                 viewModel.register(email, password)
             }
         }
+
+         */
         return binding.root
     }
 }

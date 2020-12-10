@@ -1,16 +1,22 @@
 package de.htwberlin.expensee.screen.login
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.auth.FirebaseAuth
 import de.htwberlin.expensee.R
-import de.htwberlin.expensee.databinding.FragmentLoginBinding
+import de.htwberlin.expensee.databinding.FragmentLoginRegisterBinding
 
 class UserLoginFragment : Fragment() {
 
@@ -19,19 +25,21 @@ class UserLoginFragment : Fragment() {
         const val TAG = "LoginFragment"
         const val SIGN_IN_RESULT_CODE = 1001
     }
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentLoginRegisterBinding
     private val viewModel by viewModels<UserLoginViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_login,
-            container,
-            false
-        )
+       binding = DataBindingUtil.inflate(
+           inflater,
+           R.layout.fragment_login_register,
+           container,
+           false
+       )
 
+        /*  Revised 10.12.2020
         binding.logInButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
         }
@@ -39,12 +47,34 @@ class UserLoginFragment : Fragment() {
             view.findNavController().navigate(R.id.action_userLoginFragment_to_userRegistrationFragment)
         }
 
+         */
+
+        binding.authButton.text = getString(R.string.log_in_button)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeAuthenticationState()
+
+        binding.authButton.setOnClickListener { launchSignInFlow() }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SIGN_IN_RESULT_CODE) {
+            val response = IdpResponse.fromResultIntent(data)
+            if (resultCode == Activity.RESULT_OK) {
+                // User successfully signed in
+                Log.i(
+                    TAG,
+                    "Succesfully signed in user ${FirebaseAuth.getInstance().currentUser?.displayName}!"
+                )
+            } else {
+                // Sign in failed. If response is null the user cancelled the sign-in flow
+                Log.i(TAG, "Sign in unsuccessful ${response?.error?.errorCode}")
+            }
+        }
     }
 
     private fun observeAuthenticationState() {
@@ -52,17 +82,32 @@ class UserLoginFragment : Fragment() {
             when(authenticationState) {
                 UserLoginViewModel.AuthenticationState.AUTHENTICATED -> {
                     // User Authenticated and Logged in
-                    binding.logInButton.setOnClickListener { view: View ->
+                    binding.authButton.text = "Open Data"
+                    binding.authButton.setOnClickListener { view: View ->
                         view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
                     }
                 }
 
                 else -> {
                     // Launch SignInFlow()
+                    binding.authButton.setOnClickListener { launchSignInFlow() }
                 }
 
             }
         })
+    }
+
+    private fun launchSignInFlow() {
+        val providers = arrayListOf(
+            AuthUI.IdpConfig.EmailBuilder().build()
+        )
+
+        // Create and launch sign-in intent
+        startActivityForResult(
+            AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
+                providers
+            ).build(), SIGN_IN_RESULT_CODE
+        )
     }
 
 }

@@ -1,13 +1,9 @@
 package de.htwberlin.expensee.screen.login
 
-import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseUser
-import de.htwberlin.expensee.data.repository.AppRepository
-import de.htwberlin.expensee.data.repository.UserObject
 import androidx.lifecycle.map
+import de.htwberlin.expensee.data.repository.UserObject
 
 class UserLoginViewModel() : ViewModel() {
 

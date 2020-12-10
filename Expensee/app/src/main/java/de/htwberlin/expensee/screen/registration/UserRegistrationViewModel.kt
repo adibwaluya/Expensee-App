@@ -9,6 +9,7 @@ class UserRegistrationViewModel(
 ) : ViewModel() {
 
     // TODO: Reevaluate the constructor of the class
+    /*
     private lateinit var appRepository: AppRepository
     private val userMutableLiveData = appRepository.getUserMutableLiveData
 
@@ -16,4 +17,6 @@ class UserRegistrationViewModel(
         appRepository.register(email, password)
     }
     val getUserMutableLiveData = userMutableLiveData
+
+     */
 }

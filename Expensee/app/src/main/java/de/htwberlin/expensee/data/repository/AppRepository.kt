@@ -14,9 +14,13 @@ import com.google.firebase.auth.FirebaseUser
 
 // TODO: Reevaluate constructor of the class
 class AppRepository(
+    
+
     application: Application,
     userMutableLiveData: MutableLiveData<FirebaseUser>,
     firebaseAuth: FirebaseAuth) {
+
+    /*
 
     private val application = application
     private val userMutableLiveData = MutableLiveData<FirebaseUser>()
@@ -78,5 +82,7 @@ class AppRepository(
      */
 
     val getUserMutableLiveData = userMutableLiveData
+
+     */
 
 }
