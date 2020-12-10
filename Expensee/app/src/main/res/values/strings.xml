@@ -23,4 +23,6 @@
     
     <!-- String methods -->
     <string name="addEuro">%1$f €</string>
+    <string name="Log_out">Log Out</string>
+    <string name="open_data_button">Open Data</string>
 </resources>

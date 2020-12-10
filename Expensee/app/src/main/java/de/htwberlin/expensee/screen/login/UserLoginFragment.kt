@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -82,9 +83,14 @@ class UserLoginFragment : Fragment() {
             when(authenticationState) {
                 UserLoginViewModel.AuthenticationState.AUTHENTICATED -> {
                     // User Authenticated and Logged in
-                    binding.authButton.text = "Open Data"
-                    binding.authButton.setOnClickListener { view: View ->
+                    binding.authButton.text = getString(R.string.Log_out)
+                    binding.authButton.setOnClickListener {
+                        AuthUI.getInstance().signOut(requireContext())
+                    }
+                    binding.logoutButton.isVisible = true
+                    binding.logoutButton.setOnClickListener { view: View ->
                         view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
+
                     }
                 }
 
