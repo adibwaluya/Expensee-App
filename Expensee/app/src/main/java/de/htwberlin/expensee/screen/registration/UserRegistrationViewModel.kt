@@ -4,13 +4,16 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import de.htwberlin.expensee.data.repository.AppRepository
 
-class UserRegistrationViewModel() : ViewModel() {
+class UserRegistrationViewModel(
+    appRepository: AppRepository
+) : ViewModel() {
 
+    // TODO: Reevaluate the constructor of the class
     private lateinit var appRepository: AppRepository
-    private var userMutableLiveData = appRepository.getUserMutableLiveData
+    private val userMutableLiveData = appRepository.getUserMutableLiveData
 
     fun register(email: String, password: String) {
         appRepository.register(email, password)
     }
-    var getUserMutableLiveData = userMutableLiveData
+    val getUserMutableLiveData = userMutableLiveData
 }
