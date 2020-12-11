@@ -2,12 +2,17 @@ package de.htwberlin.expensee.screen.input
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentInputBinding
 
@@ -15,6 +20,7 @@ class InputFragment : Fragment() {
 
     private lateinit var binding: FragmentInputBinding
     private lateinit var viewModel: InputViewModel
+    private var TAG = "Input"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +40,8 @@ class InputFragment : Fragment() {
         binding.inputViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.vorzeichenButton.setOnClickListener {  // Change the color of input whether it is positive or negative
+        binding.vorzeichenButton.setOnClickListener { view -> // Change the color of input whether it is positive or negative
+            Log.d(TAG, "Button Clicked!")
             var input = binding.transactionInput
             if (vorzeichenClick % 2 == 0) {
                 input.setTextColor(Color.GREEN)
@@ -42,10 +49,25 @@ class InputFragment : Fragment() {
             else {
                 input.setTextColor(Color.RED)
             }
+            saveInput(view)
         }
 
         // TODO: Add observer for finish event?
 
         return binding.root
+    }
+
+    // Test for db
+    private var mDocRef : DocumentReference = FirebaseFirestore.getInstance().document("sampleData/inputs")
+
+    fun saveInput(view: View) {
+        var inputText : EditText = binding.transactionInput
+        var inputValue : Float = inputText.toString().toFloat()
+
+        if (inputValue.isNaN()) { return }
+        val dataToSave : Float = inputValue
+        mDocRef.set(dataToSave).addOnSuccessListener {
+            Log.d(TAG, "Input has been saved!")
+        }
     }
 }
