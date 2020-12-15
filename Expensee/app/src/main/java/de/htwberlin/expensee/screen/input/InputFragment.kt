@@ -65,7 +65,8 @@ class InputFragment : Fragment() {
         var inputValue : Float = inputText.toString().toFloat()
 
         if (inputValue.isNaN()) { return }
-        val dataToSave : Float = inputValue
+        var dataToSave = mutableMapOf<String, Float>()
+        dataToSave.put("Income", inputValue)
         mDocRef.set(dataToSave).addOnSuccessListener {
             Log.d(TAG, "Input has been saved!")
         }

@@ -1,6 +1,7 @@
 package de.htwberlin.expensee.screen.mainpage
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
@@ -9,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
 
@@ -35,6 +38,13 @@ class MainPageFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.inputButton.setOnClickListener { view: View ->
+            Log.d("MainPage", "Button Clicked!")
+            // Test for db
+            /*var dataToSave = mutableMapOf<String, Float>()
+            dataToSave.put("Income", 350f)
+            mDocRef.set(dataToSave).addOnSuccessListener {
+                Log.d("MainPage", "Input has been saved!")
+            }*/
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
 
@@ -56,6 +66,11 @@ class MainPageFragment : Fragment() {
                 onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
+
+    // Test for db
+    private var mDocRef : DocumentReference = FirebaseFirestore.getInstance().document("sampleData/inputs")
+
+
 
     //TODO: Enable Access to the navigation drawer from the drawer button
 }
