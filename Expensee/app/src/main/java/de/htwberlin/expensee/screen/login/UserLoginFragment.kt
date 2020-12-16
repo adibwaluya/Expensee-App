@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -87,8 +88,12 @@ class UserLoginFragment : Fragment() {
                     binding.authButton.setOnClickListener {
                         AuthUI.getInstance().signOut(requireContext())
                     }
-                    binding.logoutButton.isVisible = true
-                    binding.logoutButton.setOnClickListener { view: View ->
+                    binding.expenseeLogo.isVisible = false
+                    binding.expenseePhrase.isVisible = false
+
+                    binding.buffetPhrase.isVisible = true
+                    binding.openDataButton.isVisible = true
+                    binding.openDataButton.setOnClickListener { view: View ->
                         view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
 
                     }
@@ -96,6 +101,11 @@ class UserLoginFragment : Fragment() {
 
                 else -> {
                     // Launch SignInFlow()
+                    binding.openDataButton.isVisible = false
+                    binding.buffetPhrase.isInvisible = true
+                    binding.expenseeLogo.isVisible = true
+                    binding.expenseePhrase.isInvisible = false
+                    binding.authButton.text = getString(R.string.proceed_button)
                     binding.authButton.setOnClickListener { launchSignInFlow() }
                 }
 

@@ -25,4 +25,8 @@
 
     <!-- String methods -->
     <string name="addEuro">%1$f €</string>
+    <string name="expensee_phrase">Your Android Budget Tracker App</string>
+    <string name="proceed_button">Proceed</string>
+    <string name="shift_phrase">Manage your budget with the easiest approach</string>
+    <string name="waren_buffet">Do not save what is left after spending, but spend what is left after saving.</string>
 </resources>
