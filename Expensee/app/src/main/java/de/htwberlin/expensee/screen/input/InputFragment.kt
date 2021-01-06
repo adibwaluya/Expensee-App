@@ -46,12 +46,12 @@ class InputFragment : Fragment() {
 
         binding.vorzeichenButton.setOnClickListener {
             val amountInput = binding.transactionInput.toString().toFloat()
-            val descInfo = binding.inputAmount.toString()
+            val descInfo = binding.transcationInfo.toString()
             val input = Input(amountInput, descInfo)
             //vmSaveInput(input)
         }
         /* Commented on 04.01.2021
-        TODO: Ask Mike if these functions necessary!
+        TODO: Ask Mike if these functions necessary! -> ClickListener? Yes, to know if the input is + or -
         binding.vorzeichenButton.setOnClickListener { view -> // Change the color of input whether it is positive or negative
             Log.d(TAG, "Button Clicked!")
             var input = binding.transactionInput
