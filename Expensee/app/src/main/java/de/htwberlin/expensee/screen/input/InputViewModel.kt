@@ -1,7 +1,9 @@
 package de.htwberlin.expensee.screen.input
 
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,8 +20,9 @@ import java.time.LocalDateTime
 class InputViewModel : ViewModel() {
 
     // Updated on 04.01.2021
-    var money: Float = 0F
+    var money: Double = 0.0
     var desc: String = ""
+    @RequiresApi(Build.VERSION_CODES.O)
     val localDateTime = LocalDateTime.now()
     private val budgetCollectionRef = Firebase.firestore
         .document("sampleData/" + localDateTime)
@@ -38,17 +41,14 @@ class InputViewModel : ViewModel() {
             }
         }
     }
-    private var _inputValue = MutableLiveData<Float>(300.01f)
-    val inputValue: MutableLiveData<Float>
+
+    // TODO: Buat apa ya???
+    private var _inputValue = MutableLiveData<Double>(300.0)
+    val inputValue: MutableLiveData<Double>
         get() = _inputValue
 
     fun setValue() {
         Log.d("InputPage", "Button Clicked!")
-        _inputValue = MutableLiveData(350f)
+        _inputValue = MutableLiveData(350.0)
     }
 }
-
-//data class Input (
-//    var amountMoney: Float,
-//    var description: String
-//)
