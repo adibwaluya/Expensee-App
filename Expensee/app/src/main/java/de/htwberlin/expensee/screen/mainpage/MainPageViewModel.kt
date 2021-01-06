@@ -10,7 +10,8 @@ import com.google.firebase.firestore.ktx.getField
 class MainPageViewModel : ViewModel() {
 
     // Test for db
-    private var _mDocRef : DocumentReference = FirebaseFirestore.getInstance().document("sampleData/inputs")
+    private var _mDocRef : DocumentReference = FirebaseFirestore.getInstance()
+        .document("sampleData/inputs")
     val mDocRef
         get() = _mDocRef
 

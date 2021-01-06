@@ -47,7 +47,7 @@ class InputFragment : Fragment() {
         binding.vorzeichenButton.setOnClickListener {
             Log.d(TAG, "Change sign clicked!")
             val textInput = binding.transactionInput.text.toString()
-            val amountInput = textInput.slice((textInput.length - 2) downTo 0).toFloat()
+            val amountInput = textInput.slice(0..(textInput.length - 2)).toFloat()
             // amountInput = binding.transactionInput.text.toString().toFloat()
             val descInfo = binding.transcationInfo.text.toString()
             val input = Input(amountInput, descInfo)

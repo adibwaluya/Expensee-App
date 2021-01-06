@@ -20,13 +20,13 @@ class InputViewModel : ViewModel() {
     var money: Float = 0F
     var desc: String = ""
     private val budgetCollectionRef = Firebase.firestore
-        .collection("sampleData")
+        .document("sampleData/input")
 
     // Updated on 04.01.2021
     fun vmSaveInput(input: Input) = CoroutineScope(Dispatchers.IO).launch {
         // Wrap the data uploading process around try and catch block
         try {
-            budgetCollectionRef.add(input).await()
+            budgetCollectionRef.set(input).await()
             withContext(Dispatchers.Main) {
                 //Toast.makeText(this@InputViewModel, "Successfully saved data", Toast.LENGTH_LONG).show()
             }
