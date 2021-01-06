@@ -53,7 +53,7 @@
             android:layout_marginRight="0dp"
             android:layout_marginLeft="155dp"
             android:gravity="center"
-            android:onClick="@{() -> mainPageViewModel.fetchInput()}"/>
+            />
 
         <ScrollView
             android:layout_width="match_parent"

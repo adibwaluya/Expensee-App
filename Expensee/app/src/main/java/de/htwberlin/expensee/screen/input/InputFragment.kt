@@ -45,9 +45,10 @@ class InputFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.vorzeichenButton.setOnClickListener {
-            val amountInput = binding.transactionInput.toString().toFloat()
-            val descInfo = binding.transcationInfo.toString()
+            val amountInput = binding.transactionInput.text.toString().toFloat()
+            val descInfo = binding.transcationInfo.text.toString()
             val input = Input(amountInput, descInfo)
+            //viewModel.setValue()
             //vmSaveInput(input)
         }
         /* Commented on 04.01.2021

@@ -53,7 +53,8 @@ class MainPageFragment : Fragment() {
         binding.refreshButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Refresh!")
             viewModel.fetchInput()
-            binding.textView.setText(viewModel.data.toString())
+            Thread.sleep(2000L)
+            //binding.textView.setText(viewModel.data.toString())
         }
 
         setHasOptionsMenu(true)

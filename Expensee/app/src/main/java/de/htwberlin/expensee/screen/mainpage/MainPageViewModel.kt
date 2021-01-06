@@ -22,6 +22,7 @@ class MainPageViewModel : ViewModel() {
             var dataFromDb = DocumentSnapshot.getData()
             if (dataFromDb.isNullOrEmpty())
                 data = dataFromDb as Map<String, Any>
+            else data = dataFromDb as Map<String, Any>
         }
     }
 }

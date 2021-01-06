@@ -1,5 +1,6 @@
 package de.htwberlin.expensee.screen.input
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,6 +41,7 @@ class InputViewModel : ViewModel() {
         get() = _inputValue
 
     fun setValue() {
+        Log.d("InputPage", "Button Clicked!")
         _inputValue = MutableLiveData(350f)
     }
 }
