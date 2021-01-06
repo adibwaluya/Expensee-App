@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -40,12 +41,19 @@ class MainPageFragment : Fragment() {
         binding.inputButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Button Clicked!")
             // Test for db
-            /*var dataToSave = mutableMapOf<String, Float>()
-            dataToSave.put("Income", 350f)
-            mDocRef.set(dataToSave).addOnSuccessListener {
+            var dataToSave = mutableMapOf<String, Float>()
+            var incomeValue = binding.editTextNumber.text.toString().toFloat()
+            dataToSave.put("Income", incomeValue)
+            viewModel.mDocRef.set(dataToSave).addOnSuccessListener {
                 Log.d("MainPage", "Input has been saved!")
-            }*/
+            }
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
+        }
+
+        binding.refreshButton.setOnClickListener { view: View ->
+            Log.d("MainPage", "Refresh!")
+            viewModel.fetchInput()
+            binding.textView.setText(viewModel.data.toString())
         }
 
         setHasOptionsMenu(true)
@@ -67,8 +75,7 @@ class MainPageFragment : Fragment() {
                 || super.onOptionsItemSelected(item)
     }
 
-    // Test for db
-    private var mDocRef : DocumentReference = FirebaseFirestore.getInstance().document("sampleData/inputs")
+
 
 
 

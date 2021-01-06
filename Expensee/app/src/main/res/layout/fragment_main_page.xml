@@ -44,6 +44,17 @@
             android:textColor="#FFFFFF"
             android:textSize="30sp"/>
 
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_button"
+            android:text="Refresh"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="155dp"
+            android:gravity="center"
+            android:onClick="@{() -> mainPageViewModel.fetchInput()}"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
