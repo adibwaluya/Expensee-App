@@ -24,7 +24,7 @@ class InputFragment : Fragment() {
 
     private lateinit var binding: FragmentInputBinding
     private lateinit var viewModel: InputViewModel
-    private var TAG = "Input"
+    private var TAG = "InputPage"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,10 +45,13 @@ class InputFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.vorzeichenButton.setOnClickListener {
-            Log.d("InputPage", "Change sign clicked!")
-            val amountInput = binding.transactionInput.text.toString().toFloat()
+            Log.d(TAG, "Change sign clicked!")
+            val textInput = binding.transactionInput.text.toString()
+            val amountInput = textInput.slice((textInput.length - 2) downTo 0).toFloat()
+            // amountInput = binding.transactionInput.text.toString().toFloat()
             val descInfo = binding.transcationInfo.text.toString()
             val input = Input(amountInput, descInfo)
+            Log.d(TAG, "Data class Input created!")
             viewModel.vmSaveInput(input)
             viewModel.setValue()
             //vmSaveInput(input)
