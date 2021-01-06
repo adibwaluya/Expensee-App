@@ -13,14 +13,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
 
 class InputViewModel : ViewModel() {
 
     // Updated on 04.01.2021
     var money: Float = 0F
     var desc: String = ""
+    val localDateTime = LocalDateTime.now()
     private val budgetCollectionRef = Firebase.firestore
-        .document("sampleData/input")
+        .document("sampleData/" + localDateTime)
 
     // Updated on 04.01.2021
     fun vmSaveInput(input: Input) = CoroutineScope(Dispatchers.IO).launch {
