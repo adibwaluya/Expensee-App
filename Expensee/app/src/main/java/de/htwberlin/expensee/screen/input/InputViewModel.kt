@@ -1,5 +1,7 @@
 package de.htwberlin.expensee.screen.input
 
+import android.app.Application
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
@@ -20,7 +22,7 @@ import kotlinx.coroutines.withContext
 import java.lang.StringBuilder
 import java.time.LocalDateTime
 
-class InputViewModel : ViewModel() {
+class InputViewModel() : ViewModel() {
 
     // Updated on 04.01.2021
     var money: Double = 0.0

@@ -20,11 +20,8 @@ import com.google.firebase.ktx.Firebase
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
 import de.htwberlin.expensee.screen.input.Input
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 import java.lang.StringBuilder
 
 class MainPageFragment : Fragment() {
@@ -67,7 +64,7 @@ class MainPageFragment : Fragment() {
         binding.refreshButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Refresh!")
 
-            vmRetrieveInput()
+            retrieveInput()
             // TODO: Ask Mike what should I do here
             /*
             viewModel.fetchInput()
@@ -99,7 +96,9 @@ class MainPageFragment : Fragment() {
     private val budgetCollectionRef = Firebase.firestore
             .collection("sampleData")
 
-    fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
+    // TODO: move this to viewModel
+    //
+    private fun retrieveInput() = CoroutineScope(Dispatchers.IO).launch {
         try {
 
             // querySnapshot = The result of our query in firestore
@@ -112,6 +111,7 @@ class MainPageFragment : Fragment() {
                 val income = document.toObject<Input>()
                 sb.append("$income\n")
             }
+
             withContext(Dispatchers.Main) {
                 binding.budgetList.text = sb.toString()
             }
@@ -121,6 +121,7 @@ class MainPageFragment : Fragment() {
             }
         }
     }
+
 
 
 
