@@ -3,6 +3,7 @@ package de.htwberlin.expensee.screen.mainpage
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -13,8 +14,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
+import de.htwberlin.expensee.screen.input.Input
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.lang.StringBuilder
 
 class MainPageFragment : Fragment() {
 
@@ -41,19 +52,27 @@ class MainPageFragment : Fragment() {
         binding.inputButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Button Clicked!")
             // Test for db
+            /*
             var dataToSave = mutableMapOf<String, Float>()
             var incomeValue = binding.editTextNumber.text.toString().toFloat()
             dataToSave.put("Income", incomeValue)
             viewModel.mDocRef.set(dataToSave).addOnSuccessListener {
                 Log.d("MainPage", "Input has been saved!")
             }
+
+             */
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
 
         binding.refreshButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Refresh!")
+
+            vmRetrieveInput()
+            // TODO: Ask Mike what should I do here
+            /*
             viewModel.fetchInput()
             Thread.sleep(2000L)
+             */
             //binding.textView.setText(viewModel.data.toString())
         }
 
@@ -76,6 +95,32 @@ class MainPageFragment : Fragment() {
                 || super.onOptionsItemSelected(item)
     }
 
+    // Updated on 06.01.2021
+    private val budgetCollectionRef = Firebase.firestore
+            .collection("sampleData")
+
+    fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
+        try {
+
+            // querySnapshot = The result of our query in firestore
+            // get() = return all the available document inside of the relevant collection
+            val querySnapshot = budgetCollectionRef.get().await()
+            val sb = StringBuilder()
+            for (document in querySnapshot.documents) {
+
+                // Get the data from our document and convert it to our Input class
+                val income = document.toObject<Input>()
+                sb.append("$income\n")
+            }
+            withContext(Dispatchers.Main) {
+                binding.budgetList.text = sb.toString()
+            }
+        } catch (e: Exception) {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
 
 

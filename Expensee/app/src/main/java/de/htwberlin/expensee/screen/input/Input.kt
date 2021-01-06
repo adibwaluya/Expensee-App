@@ -1,6 +1,6 @@
 package de.htwberlin.expensee.screen.input
 
 data class Input (
-    var amountMoney: Float,
-    var description: String
+    var amountMoney: Double = -1.0,
+    var description: String = ""
 )

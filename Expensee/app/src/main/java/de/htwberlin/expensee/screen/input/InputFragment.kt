@@ -47,13 +47,14 @@ class InputFragment : Fragment() {
         binding.vorzeichenButton.setOnClickListener {
             Log.d(TAG, "Change sign clicked!")
             val textInput = binding.transactionInput.text.toString()
-            val amountInput = textInput.slice(0..(textInput.length - 2)).toFloat()
+            val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
             // amountInput = binding.transactionInput.text.toString().toFloat()
             val descInfo = binding.transcationInfo.text.toString()
             val input = Input(amountInput, descInfo)
             Log.d(TAG, "Data class Input created!")
             viewModel.vmSaveInput(input)
-            viewModel.setValue()
+
+            //viewModel.setValue()
             //vmSaveInput(input)
         }
         /* Commented on 04.01.2021
