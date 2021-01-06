@@ -46,7 +46,7 @@ class InputViewModel : ViewModel() {
     }
 }
 
-data class Input (
-    var amountMoney: Float,
-    var description: String
-)
+//data class Input (
+//    var amountMoney: Float,
+//    var description: String
+//)

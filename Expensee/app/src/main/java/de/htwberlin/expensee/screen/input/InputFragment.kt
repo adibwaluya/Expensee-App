@@ -46,9 +46,10 @@ class InputFragment : Fragment() {
 
         binding.vorzeichenButton.setOnClickListener {
             Log.d("InputPage", "Change sign clicked!")
-            //val amountInput = binding.transactionInput.text.toString().toFloat()
-            //val descInfo = binding.transcationInfo.text.toString()
-            //val input = Input(amountInput, descInfo)
+            val amountInput = binding.transactionInput.text.toString().toFloat()
+            val descInfo = binding.transcationInfo.text.toString()
+            val input = Input(amountInput, descInfo)
+            viewModel.vmSaveInput(input)
             viewModel.setValue()
             //vmSaveInput(input)
         }
