@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="de.htwberlin.expensee.screen.login.UserLoginFragment"
-        android:label="UserLoginFragment"
+        android:label="Expensee"
         tools:layout="@layout/fragment_login_register">
         <action
             android:id="@+id/action_userLoginFragment_to_mainPageFragment"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="de.htwberlin.expensee.screen.mainpage.MainPageFragment"
-        android:label="MainPageFragment"
+        android:label="Main Menu"
         tools:layout="@layout/fragment_main_page">
         <action
             android:id="@+id/action_mainPageFragment_to_inputFragment"
@@ -30,12 +30,12 @@
     <fragment
         android:id="@+id/inputFragment"
         android:name="de.htwberlin.expensee.screen.input.InputFragment"
-        android:label="InputFragment"
-        tools:layout="@layout/fragment_input"/>
+        android:label="Input Page"
+        tools:layout="@layout/fragment_input" />
     <fragment
         android:id="@+id/userRegistrationFragment"
         android:name="de.htwberlin.expensee.screen.registration.UserRegistrationFragment"
-        android:label="UserRegistrationFragment"
+        android:label="Register - Expensee"
         tools:layout="@layout/fragment_user_registration">
         <action
             android:id="@+id/action_userRegistrationFragment_to_userLoginFragment"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="de.htwberlin.expensee.screen.about.AboutFragment"
-        android:label="AboutFragment"
+        android:label="About"
         tools:layout="@layout/fragment_about">
         <action
             android:id="@+id/action_aboutFragment_to_mainPageFragment"
