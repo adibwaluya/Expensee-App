@@ -24,6 +24,8 @@ class MainPageViewModel : ViewModel() {
     private val budgetCollectionRef = Firebase.firestore
             .collection("sampleData")
 
+    val sb = StringBuilder()
+
     // Test for db
     private var _mDocRef : DocumentReference = FirebaseFirestore.getInstance()
         .document("sampleData/inputs")
@@ -34,11 +36,11 @@ class MainPageViewModel : ViewModel() {
 
     // Updated on 06.01.2021
     // TODO: Fix this
-    /*
+
     fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
         val querySnapshot = budgetCollectionRef.get().await()
 
-        val sb = StringBuilder()
+        //val sb = StringBuilder()
         for (document in querySnapshot.documents) {
 
             val income = document.toObject<Input>()
@@ -46,8 +48,6 @@ class MainPageViewModel : ViewModel() {
         }
     }
 
-
-     */
     // Fetch function
     fun fetchInput() {
         _mDocRef.get().addOnSuccessListener { DocumentSnapshot ->

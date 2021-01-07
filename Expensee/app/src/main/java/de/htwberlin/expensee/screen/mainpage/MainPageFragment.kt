@@ -22,6 +22,7 @@ import de.htwberlin.expensee.databinding.FragmentMainPageBinding
 import de.htwberlin.expensee.screen.input.Input
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import java.lang.Exception
 import java.lang.StringBuilder
 
 class MainPageFragment : Fragment() {
@@ -64,7 +65,16 @@ class MainPageFragment : Fragment() {
         binding.refreshButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Refresh!")
 
-            retrieveInput()
+            //retrieveInput()
+            try {
+                viewModel.vmRetrieveInput()
+                binding.budgetList.text = viewModel.sb
+                Toast.makeText(activity, "Refreshed!", Toast.LENGTH_LONG).show()
+            }
+            catch (e: Exception) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
+
             // TODO: Ask Mike why do we need to sleep?
             /*
             viewModel.fetchInput()
@@ -98,7 +108,7 @@ class MainPageFragment : Fragment() {
 
     // TODO: move this to viewModel
     //
-    private fun retrieveInput()= CoroutineScope(Dispatchers.IO).launch {
+/*    private fun retrieveInput()= CoroutineScope(Dispatchers.IO).launch {
         try {
 
             // querySnapshot = The result of our query in firestore
@@ -121,7 +131,7 @@ class MainPageFragment : Fragment() {
                 Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
             }
         }
-    }
+    }*/
 
 
 
