@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -46,13 +47,19 @@ class InputFragment : Fragment() {
 
         binding.vorzeichenButton.setOnClickListener {
             Log.d(TAG, "Change sign clicked!")
-            val textInput = binding.transactionInput.text.toString()
-            val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
-            // amountInput = binding.transactionInput.text.toString().toFloat()
-            val descInfo = binding.transcationInfo.text.toString()
-            val input = Input(amountInput, descInfo)
-            Log.d(TAG, "Data class Input created!")
-            viewModel.vmSaveInput(input)
+            try {
+                val textInput = binding.transactionInput.text.toString()
+                val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
+                // amountInput = binding.transactionInput.text.toString().toFloat()
+                val descInfo = binding.transcationInfo.text.toString()
+                val input = Input(amountInput, descInfo)
+                Log.d(TAG, "Data class Input created!")
+                viewModel.vmSaveInput(input)
+                Toast.makeText(activity, "Input saved!", Toast.LENGTH_LONG).show()
+            }
+            catch (e: Exception) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
 
             //viewModel.setValue()
             //vmSaveInput(input)
