@@ -65,7 +65,7 @@ class MainPageFragment : Fragment() {
             Log.d("MainPage", "Refresh!")
 
             retrieveInput()
-            // TODO: Ask Mike what should I do here
+            // TODO: Ask Mike why do we need to sleep?
             /*
             viewModel.fetchInput()
             Thread.sleep(2000L)
@@ -98,7 +98,7 @@ class MainPageFragment : Fragment() {
 
     // TODO: move this to viewModel
     //
-    private fun retrieveInput() = CoroutineScope(Dispatchers.IO).launch {
+    private fun retrieveInput()= CoroutineScope(Dispatchers.IO).launch {
         try {
 
             // querySnapshot = The result of our query in firestore
@@ -108,12 +108,13 @@ class MainPageFragment : Fragment() {
             for (document in querySnapshot.documents) {
 
                 // Get the data from our document and convert it to our Input class
-                val income = document.toObject<Input>()
+                val income = document.toObject<Input>().toString()
                 sb.append("$income\n")
+                //binding.budgetList.text = income.toString()
             }
 
             withContext(Dispatchers.Main) {
-                binding.budgetList.text = sb.toString()
+                binding.budgetList.text = sb
             }
         } catch (e: Exception) {
             withContext(Dispatchers.Main) {
