@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -42,10 +43,22 @@ class MainPageFragment : Fragment() {
             false
         )
 
+        /*
+        val inputObserver = Observer<String> { newInput ->
+            // Update the UI, in this case, a TextView.
+            binding.budgetList.text = newInput
+        }
+
+         */
+
         // ViewModel
         viewModel = ViewModelProvider(this).get(MainPageViewModel::class.java)
         binding.mainPageViewModel = viewModel
         binding.lifecycleOwner = this
+
+        viewModel.sb.observe(viewLifecycleOwner, Observer { newInput ->
+            binding.budgetList.text = newInput
+        })
 
         binding.inputButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Button Clicked!")
@@ -68,7 +81,7 @@ class MainPageFragment : Fragment() {
             //retrieveInput()
             try {
                 viewModel.vmRetrieveInput()
-                binding.budgetList.text = viewModel.sb
+                //binding.budgetList.text = viewModel.sb.value
                 Toast.makeText(activity, "Refreshed!", Toast.LENGTH_LONG).show()
             }
             catch (e: Exception) {
