@@ -43,25 +43,19 @@ class MainPageFragment : Fragment() {
             false
         )
 
-        /*
-        val inputObserver = Observer<String> { newInput ->
-            // Update the UI, in this case, a TextView.
-            binding.budgetList.text = newInput
-        }
-
-         */
-
         // ViewModel
         viewModel = ViewModelProvider(this).get(MainPageViewModel::class.java)
         binding.mainPageViewModel = viewModel
         binding.lifecycleOwner = this
 
+        // LiveData Observer for data from Firestore
         viewModel.sb.observe(viewLifecycleOwner, Observer { newInput ->
             binding.budgetList.text = newInput
         })
 
         binding.inputButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Button Clicked!")
+
             // Test for db
             /*
             var dataToSave = mutableMapOf<String, Float>()
@@ -70,7 +64,6 @@ class MainPageFragment : Fragment() {
             viewModel.mDocRef.set(dataToSave).addOnSuccessListener {
                 Log.d("MainPage", "Input has been saved!")
             }
-
              */
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
@@ -87,21 +80,12 @@ class MainPageFragment : Fragment() {
             catch (e: Exception) {
                 Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
             }
-
-            // TODO: Ask Mike why do we need to sleep?
-            /*
-            viewModel.fetchInput()
-            Thread.sleep(2000L)
-             */
-            //binding.textView.setText(viewModel.data.toString())
         }
 
         setHasOptionsMenu(true)
         //drawerLayout = binding.drawerLayout
         //NavigationUI.setupWithNavController(binding.navView, findNavController())
         return binding.root
-
-        // TODO: Add observer for finish event?
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -115,40 +99,5 @@ class MainPageFragment : Fragment() {
                 || super.onOptionsItemSelected(item)
     }
 
-    // Updated on 06.01.2021
-    private val budgetCollectionRef = Firebase.firestore
-            .collection("sampleData")
-
-    // TODO: move this to viewModel
-    //
-/*    private fun retrieveInput()= CoroutineScope(Dispatchers.IO).launch {
-        try {
-
-            // querySnapshot = The result of our query in firestore
-            // get() = return all the available document inside of the relevant collection
-            val querySnapshot = budgetCollectionRef.get().await()
-            val sb = StringBuilder()
-            for (document in querySnapshot.documents) {
-
-                // Get the data from our document and convert it to our Input class
-                val income = document.toObject<Input>().toString()
-                sb.append("$income\n")
-                //binding.budgetList.text = income.toString()
-            }
-
-            withContext(Dispatchers.Main) {
-                binding.budgetList.text = sb
-            }
-        } catch (e: Exception) {
-            withContext(Dispatchers.Main) {
-                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
-            }
-        }
-    }*/
-
-
-
-
-
-    //TODO: Enable Access to the navigation drawer from the drawer button
+    //TODO: Enable Access to the navigation drawer from the drawer button -> Still needed?
 }

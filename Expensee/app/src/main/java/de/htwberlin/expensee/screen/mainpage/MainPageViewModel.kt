@@ -1,5 +1,8 @@
 package de.htwberlin.expensee.screen.mainpage
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentReference
@@ -20,11 +23,14 @@ import java.lang.StringBuilder
 
 class MainPageViewModel : ViewModel() {
 
-    // Updated on 06.01.2021
+    // TODO: Clean up and double check Zugriffsrechte (private or public etc)
     private val budgetCollectionRef = Firebase.firestore
             .collection("sampleData")
 
-    val sb = StringBuilder()
+    val test = StringBuilder()
+    private val _sb = MutableLiveData<String>()
+    val sb: LiveData<String>
+        get() = _sb
 
     // Test for db
     private var _mDocRef : DocumentReference = FirebaseFirestore.getInstance()
@@ -34,9 +40,7 @@ class MainPageViewModel : ViewModel() {
 
     lateinit var data : Map<String, Any>
 
-    // Updated on 06.01.2021
-    // TODO: Fix this
-
+    // TODO: Clean up
     fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
         val querySnapshot = budgetCollectionRef.get().await()
 
@@ -44,7 +48,10 @@ class MainPageViewModel : ViewModel() {
         for (document in querySnapshot.documents) {
 
             val income = document.toObject<Input>()
-            sb.append("$income\n")
+            test.append("$income\n")
+        }
+        withContext(Dispatchers.Main){
+            _sb.value = test.toString()
         }
     }
 
