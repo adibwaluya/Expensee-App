@@ -32,17 +32,12 @@
             android:ems="10"
             android:inputType="number" />
 
-        <Button
-            android:id="@+id/input_button"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_eighty"
-            android:layout_marginTop="@dimen/text_twentyOne"
-            android:layout_marginEnd="@dimen/size_eighty"
-            android:background="@drawable/input_button"
-            android:text="@string/add"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"/>
+            android:layout_gravity="center"
+            android:src="@drawable/add_money" />
 
         <Button
             android:id="@+id/refresh_button"
@@ -50,8 +45,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/input_button"
             android:text="Refresh"
-            android:layout_marginRight="0dp"
-            android:layout_marginLeft="155dp"
+            android:layout_gravity="center"
             android:gravity="center"
             />
 

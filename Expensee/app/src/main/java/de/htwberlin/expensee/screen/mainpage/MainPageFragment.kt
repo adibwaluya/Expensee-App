@@ -53,21 +53,6 @@ class MainPageFragment : Fragment() {
             binding.budgetList.text = newInput
         })
 
-        binding.inputButton.setOnClickListener { view: View ->
-            Log.d("MainPage", "Button Clicked!")
-
-            // Test for db
-            /*
-            var dataToSave = mutableMapOf<String, Float>()
-            var incomeValue = binding.editTextNumber.text.toString().toFloat()
-            dataToSave.put("Income", incomeValue)
-            viewModel.mDocRef.set(dataToSave).addOnSuccessListener {
-                Log.d("MainPage", "Input has been saved!")
-            }
-             */
-            view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
-        }
-
         binding.refreshButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Refresh!")
 
@@ -80,6 +65,11 @@ class MainPageFragment : Fragment() {
             catch (e: Exception) {
                 Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
             }
+        }
+
+        // TODO: Consult with Mike for button's positioning!
+        binding.fab.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
 
         setHasOptionsMenu(true)
