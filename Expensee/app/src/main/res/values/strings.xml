@@ -29,4 +29,5 @@
     <string name="proceed_button">Proceed</string>
     <string name="shift_phrase">Manage your budget with the easiest approach</string>
     <string name="waren_buffet">Do not save what is left after spending, but spend what is left after saving.</string>
+    <string name="saved">Save</string>
 </resources>

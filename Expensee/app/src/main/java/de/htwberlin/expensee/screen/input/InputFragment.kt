@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -47,6 +48,11 @@ class InputFragment : Fragment() {
 
         binding.vorzeichenButton.setOnClickListener {
             Log.d(TAG, "Change sign clicked!")
+
+        }
+
+        // Added on 09.01.2021
+        binding.saveButton.setOnClickListener { view: View ->
             try {
                 val textInput = binding.transactionInput.text.toString()
                 val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
@@ -63,6 +69,7 @@ class InputFragment : Fragment() {
 
             //viewModel.setValue()
             //vmSaveInput(input)
+            view.findNavController().navigate(R.id.action_inputFragment_to_mainPageFragment)
         }
         /* Commented on 04.01.2021
         TODO: Ask Mike if these functions necessary! -> ClickListener? Yes, to know if the input is + or -
@@ -85,16 +92,6 @@ class InputFragment : Fragment() {
         return binding.root
     }
 
-    // Updated 04.01.2021
-    private fun vmSaveInput() {
-        /*
-        var moneyInp: Float = viewModel.money
-        var descInp: String = viewModel.desc
-
-        viewModel.vmSaveInput(Input)
-
-         */
-    }
     // Test for db
     private var mDocRef : DocumentReference = FirebaseFirestore.getInstance().document("sampleData/inputs")
 

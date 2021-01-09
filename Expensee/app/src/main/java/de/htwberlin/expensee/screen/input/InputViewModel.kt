@@ -36,30 +36,6 @@ class InputViewModel() : ViewModel() {
     private val budgetCollectionRef = Firebase.firestore
         .collection("sampleData")
 
-    // Updated on 06.01.2021
-    /*
-    fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
-        try {
-            // querySnapshot = The result of our query in firestore
-            // get() = return all the available document inside of the relevant collection
-            val querySnapshot = budgetCollectionRef.get().await()
-            val sb = StringBuilder()
-            for (document in querySnapshot.documents) {
-
-                // Get the data from our document and convert it to our Input class
-                val income = document.toObject<Input>()
-                sb.append("$income\n")
-            }
-            withContext(Dispatchers.Main) {
-                binding.
-            }
-        } catch (e: Exception) {
-
-        }
-    }
-
-     */
-
     // Updated on 04.01.2021
     fun vmSaveInput(input: Input) = CoroutineScope(Dispatchers.IO).launch {
         // Wrap the data uploading process around try and catch block

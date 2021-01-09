@@ -19,5 +19,6 @@
     <dimen name="text_thirtyTwo">32sp</dimen>
     <dimen name="size_threeHundred">300dp</dimen>
     <dimen name="size_fourHundred">400dp</dimen>
+    <dimen name="twohundred_fifty">250dp</dimen>
     <item name="spacing_onePointTwo" type="dimen" format="float">1.2</item>
 </resources>

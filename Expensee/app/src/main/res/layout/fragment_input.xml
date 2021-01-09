@@ -47,15 +47,22 @@
         <EditText
             android:id="@+id/transcationInfo"
             android:layout_width="256dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_fifty"
             android:layout_marginStart="@dimen/size_eighty"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/size_twenty"
             android:layout_marginEnd="@dimen/size_eighty"
             android:background="@color/grey"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/black"
-            android:visibility="visible"
-            tools:text="Ich habe das verdient!" />
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twohundred_fifty"
+            android:layout_marginTop="@dimen/size_thirty"
+            android:text="@string/saved" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/dauerauftrag"
