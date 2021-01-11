@@ -64,13 +64,6 @@
             android:layout_marginTop="@dimen/size_thirty"
             android:text="@string/saved" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/dauerauftrag"
-            android:layout_width="134dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            tools:text="Dauerauftrag" />
 
     </LinearLayout>
 </layout>

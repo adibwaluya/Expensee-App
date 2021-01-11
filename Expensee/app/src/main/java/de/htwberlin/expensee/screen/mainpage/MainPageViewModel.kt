@@ -48,7 +48,9 @@ class MainPageViewModel : ViewModel() {
         for (document in querySnapshot.documents) {
 
             val income = document.toObject<Input>()
-            test.append("$income\n")
+            if (income != null) {
+                test.append("${income.description} : ${income.amountMoney} € \n")
+            }
         }
         withContext(Dispatchers.Main){
             _sb.value = test.toString()
