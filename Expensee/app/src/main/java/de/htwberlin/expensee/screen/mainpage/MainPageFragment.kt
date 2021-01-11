@@ -61,6 +61,8 @@ class MainPageFragment : Fragment() {
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
 
+        viewModel.vmRetrieveInput()
+
         setHasOptionsMenu(true)
         //drawerLayout = binding.drawerLayout
         //NavigationUI.setupWithNavController(binding.navView, findNavController())
