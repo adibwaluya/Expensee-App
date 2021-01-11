@@ -7,62 +7,78 @@
             name="mainPageViewModel"
             type="de.htwberlin.expensee.screen.mainpage.MainPageViewModel" />
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_fifty"
-            android:layout_marginTop="@dimen/size_seventy"
-            android:layout_marginEnd="@dimen/size_fifty"
+            android:layout_width="227dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="70dp"
             android:text="@string/saldo"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_aHundred"
-            android:layout_marginTop="@dimen/text_twentyOne"
-            android:layout_marginEnd="@dimen/size_aHundred"
+            android:layout_width="185dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/add_money" />
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/add_money"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/refresh_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/input_button"
-            android:text="Refresh"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/input_button"
             android:gravity="center"
-            />
+            android:text="Refresh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/size_fifty"
-            android:layout_marginEnd="@dimen/size_fifty">
+            android:id="@+id/scrollView2"
+            android:layout_width="315dp"
+            android:layout_height="321dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/refresh_button">
 
             <TextView
                 android:id="@+id/budget_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="@dimen/spacing_onePointTwo"
-                 />
+                android:lineSpacingMultiplier="@dimen/spacing_onePointTwo" />
         </ScrollView>
 
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
 
