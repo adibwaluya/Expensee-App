@@ -1,18 +1,15 @@
 package de.htwberlin.expensee.screen.mainpage
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import de.htwberlin.expensee.databinding.FragmentMainPageBinding
 import de.htwberlin.expensee.screen.input.Input
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,16 +24,17 @@ class MainPageViewModel : ViewModel() {
     private val budgetCollectionRef = Firebase.firestore
             .collection("sampleData")
 
-    val test = StringBuilder()
-    private val _sb = MutableLiveData<String>()
-    val sb: LiveData<String>
-        get() = _sb
-
-    // Test for db
     private var _mDocRef : DocumentReference = FirebaseFirestore.getInstance()
-        .document("sampleData/inputs")
-    val mDocRef
-        get() = _mDocRef
+        .document("saldo/current")
+
+    private val sb = StringBuilder()
+    private var cs = .0
+    private val _inputData = MutableLiveData<String>()
+    val inputData: LiveData<String>
+        get() = _inputData
+    private val _saldo = MutableLiveData<Double>()
+    val saldo: LiveData<Double>
+        get() = _saldo
 
     lateinit var data : Map<String, Any>
 
@@ -49,11 +47,20 @@ class MainPageViewModel : ViewModel() {
 
             val income = document.toObject<Input>()
             if (income != null) {
-                test.append("${income.description} : ${income.amountMoney} € \n")
+                sb.append("${income.description} : ${income.amountMoney} € \n")
+                cs += income.amountMoney
+                // _saldo.value = _saldo.value?.plus(income.amountMoney)
             }
         }
+        var currentSaldo = mutableMapOf<String, Double>()
+        currentSaldo["input"] = cs  //_saldo.toString().toDouble()
         withContext(Dispatchers.Main){
-            _sb.value = test.toString()
+            _inputData.value = sb.toString()
+            _saldo.value = cs
+            _mDocRef.set(currentSaldo).addOnSuccessListener {
+                Log.d("Main Page", "current saldo updated!")
+            }
+            Log.d("CURRENT SALDO: ", _mDocRef.get().toString())
         }
     }
 

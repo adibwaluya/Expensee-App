@@ -8,23 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
-import de.htwberlin.expensee.screen.input.Input
-import kotlinx.coroutines.*
-import kotlinx.coroutines.tasks.await
 import java.lang.Exception
-import java.lang.StringBuilder
 
 class MainPageFragment : Fragment() {
 
@@ -49,7 +38,7 @@ class MainPageFragment : Fragment() {
         binding.lifecycleOwner = this
 
         // LiveData Observer for data from Firestore
-        viewModel.sb.observe(viewLifecycleOwner, Observer { newInput ->
+        viewModel.inputData.observe(viewLifecycleOwner, Observer { newInput ->
             binding.budgetList.text = newInput
         })
 
