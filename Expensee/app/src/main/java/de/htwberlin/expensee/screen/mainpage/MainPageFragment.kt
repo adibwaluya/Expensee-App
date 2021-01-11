@@ -37,6 +37,9 @@ class MainPageFragment : Fragment() {
         binding.mainPageViewModel = viewModel
         binding.lifecycleOwner = this
 
+        viewModel.saldo.observe(viewLifecycleOwner, Observer { currentSaldo ->
+            binding.currentSaldoEt.text = currentSaldo.toDouble().toString()
+        })
         // LiveData Observer for data from Firestore
         viewModel.inputData.observe(viewLifecycleOwner, Observer { newInput ->
             binding.budgetList.text = newInput
@@ -56,7 +59,6 @@ class MainPageFragment : Fragment() {
             }
         }
 
-        // TODO: Consult with Mike for button's positioning!
         binding.fab.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }

@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/editTextNumber"
+            android:id="@+id/currentSaldo_et"
             android:layout_width="185dp"
             android:layout_height="54dp"
             android:layout_marginStart="55dp"
@@ -59,7 +59,7 @@
             android:text="Refresh"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/currentSaldo_et" />
 
         <ScrollView
             android:id="@+id/scrollView2"
