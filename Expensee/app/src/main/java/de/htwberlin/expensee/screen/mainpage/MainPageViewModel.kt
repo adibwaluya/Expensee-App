@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -40,7 +41,8 @@ class MainPageViewModel : ViewModel() {
 
     // TODO: Clean up
     fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
-        val querySnapshot = budgetCollectionRef.get().await()
+        val querySnapshot = budgetCollectionRef
+                .orderBy("description", Query.Direction.DESCENDING).get().await()
 
         //val sb = StringBuilder()
         for (document in querySnapshot.documents) {
