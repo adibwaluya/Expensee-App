@@ -28,6 +28,9 @@ class MainPageViewModel : ViewModel() {
     private var _mDocRef : DocumentReference = FirebaseFirestore.getInstance()
         .document("saldo/current")
 
+    private val rootRef = Firebase.firestore
+            .collection("id")
+
     private val sb = StringBuilder()
     private var cs = .0
     private val _inputData = MutableLiveData<String>()
@@ -36,13 +39,18 @@ class MainPageViewModel : ViewModel() {
     private val _saldo = MutableLiveData<Double>()
     val saldo: LiveData<Double>
         get() = _saldo
+    private var id = 0
+    private val _inputId = MutableLiveData<Int>()
+    val inputId: LiveData<Int>
+        get() = _inputId
 
     lateinit var data : Map<String, Any>
 
     // TODO: Clean up
     fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
-        val querySnapshot = budgetCollectionRef
-                .orderBy("description", Query.Direction.DESCENDING).get().await()
+
+        // budgetCollectionRef.orderBy("description", Query.Direction.Descending.get().await()
+        val querySnapshot = budgetCollectionRef.get().await()
 
         //val sb = StringBuilder()
         for (document in querySnapshot.documents) {
@@ -56,13 +64,19 @@ class MainPageViewModel : ViewModel() {
         }
         var currentSaldo = mutableMapOf<String, Double>()
         currentSaldo["input"] = cs  //_saldo.toString().toDouble()
+        var currentId = mutableMapOf<String, Int>()
         withContext(Dispatchers.Main){
             _inputData.value = sb.toString()
             _saldo.value = cs
             _mDocRef.set(currentSaldo).addOnSuccessListener {
                 Log.d("Main Page", "current saldo updated!")
             }
+            rootRef.orderBy("idNumber", Query.Direction.ASCENDING)
             Log.d("CURRENT SALDO: ", _mDocRef.get().toString())
+        }
+
+        withContext(Dispatchers.Main) {
+            
         }
     }
 

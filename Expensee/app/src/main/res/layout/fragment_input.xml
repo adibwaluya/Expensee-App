@@ -18,7 +18,7 @@
             android:layout_marginStart="@dimen/size_aHundred"
             android:layout_marginTop="@dimen/size_aHundred"
             android:layout_marginEnd="@dimen/size_aHundred"
-            android:inputType="numberDecimal"
+            android:inputType="numberSigned"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:text="@{@string/addEuro(inputViewModel.inputValue)}"
             android:textAlignment="center"
