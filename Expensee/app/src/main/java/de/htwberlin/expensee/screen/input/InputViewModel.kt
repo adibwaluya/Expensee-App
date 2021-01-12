@@ -52,14 +52,4 @@ class InputViewModel() : ViewModel() {
             }
         }
     }
-
-    // TODO: Buat apa ya??? -> Platzhalter aja sihh. Kosongin aja kah?
-    private var _inputValue = MutableLiveData<Double>(300.0)
-    val inputValue: MutableLiveData<Double>
-        get() = _inputValue
-
-    fun setValue() {
-        Log.d("InputPage", "Button Clicked!")
-        _inputValue = MutableLiveData(350.0)
-    }
 }
