@@ -46,17 +46,11 @@ class InputFragment : Fragment() {
         binding.inputViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.vorzeichenButton.setOnClickListener {
-            Log.d(TAG, "Change sign clicked!")
-
-        }
-
         // Added on 09.01.2021
         binding.saveButton.setOnClickListener { view: View ->
             try {
                 val textInput = binding.transactionInput.text.toString()
                 val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
-                // amountInput = binding.transactionInput.text.toString().toFloat()
                 val descInfo = binding.transcationInfo.text.toString()
                 val input = Input(amountInput, descInfo)
                 Log.d(TAG, "Data class Input created!")
