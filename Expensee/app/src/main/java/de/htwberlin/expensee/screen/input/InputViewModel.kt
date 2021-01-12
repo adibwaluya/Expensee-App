@@ -53,7 +53,7 @@ class InputViewModel() : ViewModel() {
         }
     }
 
-    // TODO: Buat apa ya???
+    // TODO: Buat apa ya??? -> Platzhalter aja sihh. Kosongin aja kah?
     private var _inputValue = MutableLiveData<Double>(300.0)
     val inputValue: MutableLiveData<Double>
         get() = _inputValue

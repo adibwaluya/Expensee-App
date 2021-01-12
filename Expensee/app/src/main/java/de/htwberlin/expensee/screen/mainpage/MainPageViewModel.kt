@@ -52,6 +52,10 @@ class MainPageViewModel : ViewModel() {
         // budgetCollectionRef.orderBy("description", Query.Direction.Descending.get().await()
         val querySnapshot = budgetCollectionRef.get().await()
 
+        // Clear any previous data
+        sb.clear()
+        cs = .0
+
         //val sb = StringBuilder()
         for (document in querySnapshot.documents) {
 
