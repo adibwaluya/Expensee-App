@@ -48,6 +48,7 @@ class InputFragment : Fragment() {
 
         binding.vorzeichenButton.setOnClickListener {
             Log.d(TAG, "Change sign clicked!")
+            binding.transactionInput.text.toString().toDouble() * (-1)
 
         }
 
