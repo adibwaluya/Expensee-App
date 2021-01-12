@@ -61,8 +61,6 @@ class InputFragment : Fragment() {
                 Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
             }
 
-            //viewModel.setValue()
-            //vmSaveInput(input)
             view.findNavController().navigate(R.id.action_inputFragment_to_mainPageFragment)
         }
 
