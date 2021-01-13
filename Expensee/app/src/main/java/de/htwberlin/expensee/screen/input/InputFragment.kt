@@ -46,15 +46,6 @@ class InputFragment : Fragment() {
         binding.inputViewModel = viewModel
         binding.lifecycleOwner = this
 
-<<<<<<< HEAD
-        binding.vorzeichenButton.setOnClickListener {
-            Log.d(TAG, "Change sign clicked!")
-            binding.transactionInput.text.toString().toDouble() * (-1)
-
-        }
-
-=======
->>>>>>> 09c64542da48d704930131254f93a15a6cf7984e
         // Added on 09.01.2021
         binding.saveButton.setOnClickListener { view: View ->
             try {
