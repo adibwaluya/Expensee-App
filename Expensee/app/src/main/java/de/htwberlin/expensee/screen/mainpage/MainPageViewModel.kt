@@ -56,12 +56,11 @@ class MainPageViewModel : ViewModel() {
         sb.clear()
         cs = .0
 
-        //val sb = StringBuilder()
         for (document in querySnapshot.documents) {
 
             val income = document.toObject<Input>()
             if (income != null) {
-                sb.append("${income.description} : ${income.amountMoney} € \n")
+                sb.insert(0, "${income.description} : ${income.amountMoney} € \n")
                 cs += income.amountMoney
                 // _saldo.value = _saldo.value?.plus(income.amountMoney)
             }
@@ -75,7 +74,7 @@ class MainPageViewModel : ViewModel() {
             _mDocRef.set(currentSaldo).addOnSuccessListener {
                 Log.d("Main Page", "current saldo updated!")
             }
-            rootRef.orderBy("idNumber", Query.Direction.ASCENDING)
+            rootRef.orderBy("idNumber", Query.Direction.DESCENDING)
             Log.d("CURRENT SALDO: ", _mDocRef.get().toString())
         }
 

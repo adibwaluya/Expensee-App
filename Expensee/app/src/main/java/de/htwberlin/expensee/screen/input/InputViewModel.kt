@@ -3,6 +3,7 @@ package de.htwberlin.expensee.screen.input
 import android.app.Application
 import android.content.Context
 import android.os.Build
+import android.os.SystemClock
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -24,12 +25,6 @@ import java.time.LocalDateTime
 
 class InputViewModel() : ViewModel() {
 
-    // Updated on 04.01.2021
-    var money: Double = 0.0
-    var desc: String = ""
-    @RequiresApi(Build.VERSION_CODES.O)
-    val localDateTime = LocalDateTime.now()
-
     // Updated 06.01.2021,
     // TODO: Ask mike, last written -> firestore.document(??)
     // TODO: LocalDateTime to be added (if necessary)
@@ -41,8 +36,10 @@ class InputViewModel() : ViewModel() {
         // Wrap the data uploading process around try and catch block
         try {
             // Write 'set' for document, 'add' for collection
-            // TODO: Use MutableLiveData for Toast!
-            budgetCollectionRef.add(input).await()
+            val localTime = System.currentTimeMillis()
+            budgetCollectionRef.document(localTime.toString()).set(input).await()
+
+            // TODO: Use MutableLiveData for Toast! -> Still needed?
             withContext(Dispatchers.Main) {
                 //Toast.makeText(this@InputViewModel, "Successfully saved data", Toast.LENGTH_LONG).show()
             }
