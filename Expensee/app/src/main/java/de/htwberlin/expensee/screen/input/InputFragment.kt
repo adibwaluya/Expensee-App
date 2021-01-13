@@ -46,18 +46,20 @@ class InputFragment : Fragment() {
         binding.inputViewModel = viewModel
         binding.lifecycleOwner = this
 
+<<<<<<< HEAD
         binding.vorzeichenButton.setOnClickListener {
             Log.d(TAG, "Change sign clicked!")
             binding.transactionInput.text.toString().toDouble() * (-1)
 
         }
 
+=======
+>>>>>>> 09c64542da48d704930131254f93a15a6cf7984e
         // Added on 09.01.2021
         binding.saveButton.setOnClickListener { view: View ->
             try {
                 val textInput = binding.transactionInput.text.toString()
                 val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
-                // amountInput = binding.transactionInput.text.toString().toFloat()
                 val descInfo = binding.transcationInfo.text.toString()
                 val input = Input(amountInput, descInfo)
                 Log.d(TAG, "Data class Input created!")
@@ -68,43 +70,26 @@ class InputFragment : Fragment() {
                 Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
             }
 
-            //viewModel.setValue()
-            //vmSaveInput(input)
             view.findNavController().navigate(R.id.action_inputFragment_to_mainPageFragment)
         }
-        /* Commented on 04.01.2021
-        TODO: Ask Mike if these functions necessary! -> ClickListener? Yes, to know if the input is + or -
-        binding.vorzeichenButton.setOnClickListener { view -> // Change the color of input whether it is positive or negative
-            Log.d(TAG, "Button Clicked!")
-            var input = binding.transactionInput
-            if (vorzeichenClick % 2 == 0) {
-                input.setTextColor(Color.GREEN)
+
+        //  Logic for sign button
+        binding.vorzeichenButton.setOnClickListener { view ->
+            Log.d(TAG, "Vorzeichen!")
+            val textInput = binding.transactionInput.text.toString()
+            val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
+            val endInput = amountInput * -1
+            val endString = "$endInput €"
+            binding.transactionInput.setText(endString)
+
+            if (endInput >= 0) {
+                binding.transactionInput.setTextColor(Color.GREEN)
             }
             else {
-                input.setTextColor(Color.RED)
+                binding.transactionInput.setTextColor(Color.RED)
             }
-            saveInput(view)
         }
-
-
-         */
-        // TODO: Add observer for finish event?
 
         return binding.root
-    }
-
-    // Test for db
-    private var mDocRef : DocumentReference = FirebaseFirestore.getInstance().document("sampleData/inputs")
-
-    fun saveInput(view: View) {
-        var inputText : EditText = binding.transactionInput
-        var inputValue : Float = inputText.toString().toFloat()
-
-        if (inputValue.isNaN()) { return }
-        var dataToSave = mutableMapOf<String, Float>()
-        dataToSave.put("Income", inputValue)
-        mDocRef.set(dataToSave).addOnSuccessListener {
-            Log.d(TAG, "Input has been saved!")
-        }
     }
 }
