@@ -1,6 +1,9 @@
 package de.htwberlin.expensee.screen.mainpage
 
+import android.graphics.Paint
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.*
 import android.widget.Toast
@@ -39,6 +42,9 @@ class MainPageFragment : Fragment() {
 
         viewModel.saldo.observe(viewLifecycleOwner, Observer { currentSaldo ->
             binding.currentSaldoEt.text = currentSaldo.toDouble().toString()
+            val mBSpannableString = SpannableString(binding.currentSaldoEt.text)
+            val mUnderlineSpan = UnderlineSpan()
+            mBSpannableString.setSpan()
         })
         // LiveData Observer for data from Firestore
         viewModel.inputData.observe(viewLifecycleOwner, Observer { newInput ->
