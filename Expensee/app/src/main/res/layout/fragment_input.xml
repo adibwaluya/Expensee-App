@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/size_eighty"
             android:layout_marginTop="@dimen/size_twenty"
             android:fontFamily="@font/alike_angular"
             android:text="@string/desc"
@@ -60,12 +60,30 @@
             android:textIsSelectable="true"
             android:visibility="visible" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_eighty"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/input_date"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/Date_et"
+            android:layout_width="256dp"
+            android:layout_height="@dimen/size_twenty"
+            android:layout_marginStart="@dimen/size_eighty"
+            android:layout_marginEnd="@dimen/size_eighty"
+            android:ems="10"
+            android:textIsSelectable="true"
+            android:background="@color/grey" />
+
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twohundred_fifty"
-            android:layout_marginTop="@dimen/size_thirty"
+            android:layout_marginTop="@dimen/size_twenty"
             android:text="@string/saved" />
 
 

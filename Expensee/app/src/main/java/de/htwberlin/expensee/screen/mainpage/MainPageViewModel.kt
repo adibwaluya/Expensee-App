@@ -60,7 +60,7 @@ class MainPageViewModel : ViewModel() {
 
             val income = document.toObject<Input>()
             if (income != null) {
-                sb.insert(0, "${income.description} : ${income.amountMoney} € \n")
+                sb.insert(0, "[${income.date}] ${income.description} : ${income.amountMoney} € \n")
                 cs += income.amountMoney
                 // _saldo.value = _saldo.value?.plus(income.amountMoney)
             }

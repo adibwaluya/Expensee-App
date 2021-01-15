@@ -31,4 +31,5 @@
     <!-- String methods -->
     <string name="addEuro">%1$d €</string>
     <string name="desc">Description</string>
+    <string name="input_date">Input Date</string>
 </resources>
