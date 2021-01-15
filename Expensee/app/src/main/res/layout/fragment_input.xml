@@ -18,11 +18,11 @@
             android:layout_marginStart="@dimen/size_aHundred"
             android:layout_marginTop="@dimen/size_aHundred"
             android:layout_marginEnd="@dimen/size_aHundred"
+            android:fontFamily="@font/cormorant_sc_semibold"
             android:inputType="numberSigned|numberDecimal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:text="@{@string/addEuro(0)}"
             android:textAlignment="center"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
         <Button
             android:id="@+id/vorzeichen_button"
@@ -39,9 +39,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/size_eighty"
-            android:layout_marginTop="@dimen/size_thirty"
-            android:text="@string/info"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/size_twenty"
+            android:fontFamily="@font/alike_angular"
+            android:text="@string/desc"
             android:textSize="24sp" />
 
         <EditText
@@ -49,11 +50,14 @@
             android:layout_width="256dp"
             android:layout_height="@dimen/size_fifty"
             android:layout_marginStart="@dimen/size_eighty"
-            android:layout_marginTop="@dimen/size_twenty"
+            android:layout_marginTop="@dimen/size_ten"
             android:layout_marginEnd="@dimen/size_eighty"
             android:background="@color/grey"
+            android:fontFamily="@font/philosopher"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/black"
+            android:textIsSelectable="true"
             android:visibility="visible" />
 
         <Button
