@@ -90,6 +90,7 @@
                 android:id="@+id/budget_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/andada"
                 android:lineSpacingMultiplier="@dimen/spacing_onePointTwo" />
         </ScrollView>
 
