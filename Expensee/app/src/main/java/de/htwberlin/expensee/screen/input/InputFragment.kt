@@ -48,21 +48,30 @@ class InputFragment : Fragment() {
 
         // Added on 09.01.2021
         binding.saveButton.setOnClickListener { view: View ->
-            try {
-                val textInput = binding.transactionInput.text.toString()
-                val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
-                val descInfo = binding.transcationInfo.text.toString()
-                val dateInput = binding.DateEt.text.toString()
-                val input = Input(amountInput, descInfo, dateInput)
-                Log.d(TAG, "Data class Input created!")
-                viewModel.vmSaveInput(input)
-                Toast.makeText(activity, "Input saved!", Toast.LENGTH_LONG).show()
+
+            val textInput = binding.transactionInput.text.toString()
+            val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
+            val descInfo = binding.transcationInfo.text.toString()
+            val dateInput = binding.DateEt.text.toString()
+            if (textInput.isEmpty() || amountInput == 0.0 || descInfo.isEmpty() || dateInput.isEmpty()) {
+                Toast.makeText(activity, "Please fill up all the information!", Toast.LENGTH_LONG)
+                        .show()
             }
-            catch (e: Exception) {
-                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            else {
+                try {
+
+                    val input = Input(amountInput, descInfo, dateInput)
+                    Log.d(TAG, "Data class Input created!")
+                    viewModel.vmSaveInput(input)
+                    Toast.makeText(activity, "Input saved!", Toast.LENGTH_LONG).show()
+                }
+                catch (e: Exception) {
+                    Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+                }
+
+                view.findNavController().navigate(R.id.action_inputFragment_to_mainPageFragment)
             }
 
-            view.findNavController().navigate(R.id.action_inputFragment_to_mainPageFragment)
         }
 
         //  Logic for sign button
