@@ -32,7 +32,7 @@ class MainPageViewModel : ViewModel() {
             .collection("id")
 
     private val sb = StringBuilder()
-    private var cs = .0
+    private var cs = .00
     private val _inputData = MutableLiveData<String>()
     val inputData: LiveData<String>
         get() = _inputData

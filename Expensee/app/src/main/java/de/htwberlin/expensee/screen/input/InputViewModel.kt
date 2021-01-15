@@ -21,7 +21,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.lang.StringBuilder
+import java.math.BigDecimal
 import java.time.LocalDateTime
+import kotlin.math.round
 
 class InputViewModel() : ViewModel() {
 
@@ -49,4 +51,13 @@ class InputViewModel() : ViewModel() {
             }
         }
     }
+
+    /*
+    fun Double.round(decimals: Int): Double {
+        var multiplier = 1.0
+        repeat(decimals) { multiplier *= 10 }
+        return round(this * multiplier) / multiplier
+    }
+
+     */
 }
