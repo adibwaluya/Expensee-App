@@ -18,6 +18,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
+import de.htwberlin.expensee.screen.input.Input
 import java.lang.Exception
 
 class MainPageFragment : Fragment() {
@@ -47,7 +48,7 @@ class MainPageFragment : Fragment() {
             val spannableString = SpannableString(currentSaldo.toDouble().toString())
             val mUnderlineSpan = UnderlineSpan()
             spannableString.setSpan(mUnderlineSpan, 0, spannableString.length, 0)
-            binding.currentSaldoEt.text = spannableString
+            binding.currentSaldoEt.text = "$spannableString €"
 
         })
 
@@ -73,6 +74,18 @@ class MainPageFragment : Fragment() {
         binding.fab.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
+
+        /* // TODO: Implemented soon!
+        binding.fabDelete.setOnClickListener { view: View ->
+            try {
+                viewModel.deletePerson()
+            } catch (e: Exception) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
+
+        }
+
+         */
 
         viewModel.vmRetrieveInput()
 

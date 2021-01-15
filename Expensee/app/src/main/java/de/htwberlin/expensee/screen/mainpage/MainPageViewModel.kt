@@ -79,7 +79,20 @@ class MainPageViewModel : ViewModel() {
         }
 
         withContext(Dispatchers.Main) {
-            
+        }
+    }
+    
+    // Written on 14.01.2020
+    // TODO: Move this to DeleteViewModel!
+    fun deletePerson(input: Input) = CoroutineScope(Dispatchers.IO).launch {
+        val inputQuery = budgetCollectionRef
+                .whereEqualTo("amountMoney", input.amountMoney)
+                .whereEqualTo("description", input.description)
+                .get()
+                .await()
+
+        for (document in inputQuery) {
+            budgetCollectionRef.document(document.id).delete().await()
         }
     }
 
