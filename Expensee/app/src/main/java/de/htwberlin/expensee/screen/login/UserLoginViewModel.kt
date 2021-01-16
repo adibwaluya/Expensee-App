@@ -20,16 +20,4 @@ class UserLoginViewModel() : ViewModel() {
         }
     }
 
-    /*
-    private lateinit var appRepository: AppRepository
-    private var userMutableLiveData = appRepository.getUserMutableLiveData
-
-    fun register(email: String, password: String) {
-        appRepository.register(email, password)
-    }
-
-    var getUserMutableLiveData = userMutableLiveData
-
-
-     */
 }

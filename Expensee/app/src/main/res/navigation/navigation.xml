@@ -14,9 +14,6 @@
             android:id="@+id/action_userLoginFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
-        <action
-            android:id="@+id/action_userLoginFragment_to_userRegistrationFragment"
-            app:destination="@id/userRegistrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainPageFragment"
@@ -35,15 +32,6 @@
         <action
             android:id="@+id/action_inputFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userRegistrationFragment"
-        android:name="de.htwberlin.expensee.screen.registration.UserRegistrationFragment"
-        android:label="Register - Expensee"
-        tools:layout="@layout/fragment_user_registration">
-        <action
-            android:id="@+id/action_userRegistrationFragment_to_userLoginFragment"
-            app:destination="@id/userLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

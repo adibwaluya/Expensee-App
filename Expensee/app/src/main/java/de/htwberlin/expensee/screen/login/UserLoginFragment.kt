@@ -41,16 +41,6 @@ class UserLoginFragment : Fragment() {
            false
        )
 
-        /*  Revised 10.12.2020
-        binding.logInButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
-        }
-        binding.signUpButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_userLoginFragment_to_userRegistrationFragment)
-        }
-
-         */
-
         binding.authButton.text = getString(R.string.log_in_button)
         return binding.root
     }

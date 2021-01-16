@@ -32,8 +32,6 @@ class InputFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var vorzeichenClick = 0
-
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_input,
