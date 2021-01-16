@@ -8,7 +8,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -20,7 +19,6 @@ import java.lang.Exception
 class MainPageFragment : Fragment() {
 
     private lateinit var binding: FragmentMainPageBinding
-    private lateinit var drawerLayout: DrawerLayout
     private lateinit var viewModel: MainPageViewModel
 
     override fun onCreateView(
@@ -39,20 +37,21 @@ class MainPageFragment : Fragment() {
         binding.mainPageViewModel = viewModel
         binding.lifecycleOwner = this
 
+        // LiveData Observers
+        // For current saldo
         viewModel.saldo.observe(viewLifecycleOwner, Observer { currentSaldo ->
-
             val spannableString = SpannableString(currentSaldo.toDouble().toString())
             val mUnderlineSpan = UnderlineSpan()
             spannableString.setSpan(mUnderlineSpan, 0, spannableString.length, 0)
             binding.currentSaldoEt.text = "$spannableString €"
-
         })
 
-        // LiveData Observer for data from Firestore
+        // For all input data
         viewModel.inputData.observe(viewLifecycleOwner, Observer { newInput ->
             binding.budgetList.text = newInput
         })
 
+        // Logic for refresh button
         binding.refreshButton.setOnClickListener { view: View ->
             Log.d("MainPage", "Refresh!")
 
@@ -67,6 +66,7 @@ class MainPageFragment : Fragment() {
             }
         }
 
+        // Logic for input action button
         binding.fab.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
@@ -83,11 +83,11 @@ class MainPageFragment : Fragment() {
 
          */
 
+        // Retrieve data from database everytime the fragment is created
         viewModel.vmRetrieveInput()
 
         setHasOptionsMenu(true)
-        //drawerLayout = binding.drawerLayout
-        //NavigationUI.setupWithNavController(binding.navView, findNavController())
+
         return binding.root
     }
 
@@ -101,6 +101,4 @@ class MainPageFragment : Fragment() {
                 onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
-
-    //TODO: Enable Access to the navigation drawer from the drawer button -> Still needed?
 }

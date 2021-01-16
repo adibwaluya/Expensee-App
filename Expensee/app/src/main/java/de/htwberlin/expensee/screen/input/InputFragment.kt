@@ -37,9 +37,8 @@ class InputFragment : Fragment() {
         binding.inputViewModel = viewModel
         binding.lifecycleOwner = this
 
-        // Added on 09.01.2021
+        // Logic for save button
         binding.saveButton.setOnClickListener { view: View ->
-
             val textInput = binding.transactionInput.text.toString()
             val amountInput = textInput.slice(0..(textInput.length - 2)).toDouble()
             val descInfo = binding.transcationInfo.text.toString()
@@ -50,7 +49,6 @@ class InputFragment : Fragment() {
             }
             else {
                 try {
-
                     val input = Input(amountInput, descInfo, dateInput)
                     Log.d(TAG, "Data class Input created!")
                     viewModel.vmSaveInput(input)

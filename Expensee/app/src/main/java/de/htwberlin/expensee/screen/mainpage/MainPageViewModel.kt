@@ -19,8 +19,6 @@ import kotlinx.coroutines.withContext
 import java.lang.StringBuilder
 
 class MainPageViewModel : ViewModel() {
-
-    // TODO: Clean up and double check Zugriffsrechte (private or public etc)
     private val budgetCollectionRef = Firebase.firestore
             .collection("sampleData")
 
@@ -33,22 +31,18 @@ class MainPageViewModel : ViewModel() {
     private val sb = StringBuilder()
     private var cs = .00
     private val _inputData = MutableLiveData<String>()
+
     val inputData: LiveData<String>
         get() = _inputData
+
     private val _saldo = MutableLiveData<Double>()
     val saldo: LiveData<Double>
         get() = _saldo
-    private var id = 0
-    private val _inputId = MutableLiveData<Int>()
-    val inputId: LiveData<Int>
-        get() = _inputId
 
     lateinit var data : Map<String, Any>
 
-    // TODO: Clean up
     fun vmRetrieveInput() = CoroutineScope(Dispatchers.IO).launch {
 
-        // budgetCollectionRef.orderBy("description", Query.Direction.Descending.get().await()
         val querySnapshot = budgetCollectionRef.get().await()
 
         // Clear any previous data
@@ -56,18 +50,17 @@ class MainPageViewModel : ViewModel() {
         cs = .0
 
         for (document in querySnapshot.documents) {
-
             val income = document.toObject<Input>()
             if (income != null) {
                 sb.insert(0, "[${income.date}] ${income.description} : ${income.amountMoney} € \n")
                 cs += income.amountMoney
-                // _saldo.value = _saldo.value?.plus(income.amountMoney)
             }
         }
         var currentSaldo = mutableMapOf<String, Double>()
         currentSaldo["input"] = cs  //_saldo.toString().toDouble()
         var currentId = mutableMapOf<String, Int>()
-        withContext(Dispatchers.Main){
+
+        withContext(Dispatchers.Main){  // Processes on main thread
             _inputData.value = sb.toString()
             _saldo.value = cs
             _mDocRef.set(currentSaldo).addOnSuccessListener {
@@ -75,9 +68,6 @@ class MainPageViewModel : ViewModel() {
             }
             rootRef.orderBy("idNumber", Query.Direction.DESCENDING)
             Log.d("CURRENT SALDO: ", _mDocRef.get().toString())
-        }
-
-        withContext(Dispatchers.Main) {
         }
     }
     
@@ -94,15 +84,4 @@ class MainPageViewModel : ViewModel() {
             budgetCollectionRef.document(document.id).delete().await()
         }
     }
-
-    // Fetch function
-    fun fetchInput() {
-        _mDocRef.get().addOnSuccessListener { DocumentSnapshot ->
-            var dataFromDb = DocumentSnapshot.getData()
-            if (dataFromDb.isNullOrEmpty())
-                data = dataFromDb as Map<String, Any>
-            else data = dataFromDb as Map<String, Any>
-        }
-    }
-
 }
