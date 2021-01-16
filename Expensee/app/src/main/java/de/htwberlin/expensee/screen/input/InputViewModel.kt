@@ -27,45 +27,15 @@ import kotlin.math.round
 
 class InputViewModel() : ViewModel() {
 
-    // Updated 06.01.2021,
-    // TODO: Ask mike, last written -> firestore.document(??)
-    // TODO: LocalDateTime to be added (if necessary)
     private val budgetCollectionRef = Firebase.firestore
         .collection("sampleData")
 
-    // Updated on 04.01.2021
     fun vmSaveInput(input: Input) = CoroutineScope(Dispatchers.IO).launch {
         // Wrap the data uploading process around try and catch block
 
         val localTime = System.currentTimeMillis()
         budgetCollectionRef.document(localTime.toString()).set(input).await()
 
-        // TODO: Probably delete this!
-        /* Commented on 16.01.2021
-        try {
-            // Write 'set' for document, 'add' for collection
-            val localTime = System.currentTimeMillis()
-            budgetCollectionRef.document(localTime.toString()).set(input).await()
-
-            // TODO: Use MutableLiveData for Toast! -> Still needed?
-            withContext(Dispatchers.Main) {
-                //Toast.makeText(this@InputViewModel, "Successfully saved data", Toast.LENGTH_LONG).show()
-            }
-        } catch (e: Exception) {
-            withContext(Dispatchers.Main) {
-                //Toast.makeText(this@InputViewModel, e.message, Toast.LENGTH_LONG).show()
-            }
-        }
-
-         */
     }
 
-    /* TODO: Function for 2 decimal places doesn't work yet:(
-    fun Double.round(decimals: Int): Double {
-        var multiplier = 1.0
-        repeat(decimals) { multiplier *= 10 }
-        return round(this * multiplier) / multiplier
-    }
-
-     */
 }
