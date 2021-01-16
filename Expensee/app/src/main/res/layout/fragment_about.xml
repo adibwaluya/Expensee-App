@@ -27,11 +27,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_fourty"
-            android:layout_marginEnd="@dimen/size_fourty"
             android:layout_marginTop="@dimen/size_twenty"
-            android:textAlignment="viewStart"
-            android:textSize="@dimen/text_twentyOne"
+            android:layout_marginEnd="@dimen/size_fourty"
             android:fontFamily="serif"
-            android:text="Expensee is a platform which could help you to save all important income and expenses in your daily life.\n\nEasy to use, your budget tracker is also safe and only accessible for you."/>
+            android:text="Expensee is a safe and easy to use platform that could help you to track all important income and expenses in your daily life."
+            android:textAlignment="center"
+            android:textSize="@dimen/text_twentyOne" />
     </LinearLayout>
 </layout>

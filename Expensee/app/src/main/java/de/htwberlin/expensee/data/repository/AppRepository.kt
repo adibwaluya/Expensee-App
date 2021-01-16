@@ -1,14 +1,7 @@
 package de.htwberlin.expensee.data.repository
 
 import android.app.Application
-import android.os.Build
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
-import com.google.android.play.core.tasks.OnCompleteListener
-import com.google.android.play.core.tasks.Task
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 

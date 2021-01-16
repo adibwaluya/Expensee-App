@@ -3,8 +3,6 @@ package de.htwberlin.expensee.data.repository
 import androidx.lifecycle.LiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.Exclude
-import java.io.Serializable
 
 class UserObject : LiveData<FirebaseUser?>() {
 

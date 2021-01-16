@@ -7,19 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentInputBinding
-import kotlinx.coroutines.*
 import java.lang.Exception
 
 class InputFragment : Fragment() {

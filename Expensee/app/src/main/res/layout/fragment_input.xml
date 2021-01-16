@@ -76,6 +76,7 @@
             android:layout_marginEnd="@dimen/size_eighty"
             android:ems="10"
             android:textIsSelectable="true"
+            android:text= "@{java.time.LocalDate.now().toString()}"
             android:background="@color/grey" />
 
         <Button

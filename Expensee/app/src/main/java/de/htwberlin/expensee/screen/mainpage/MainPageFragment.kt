@@ -1,10 +1,7 @@
 package de.htwberlin.expensee.screen.mainpage
 
-import android.graphics.Paint
 import android.os.Bundle
-import android.text.Spannable
 import android.text.SpannableString
-import android.text.Spanned
 import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.*
@@ -18,7 +15,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
-import de.htwberlin.expensee.screen.input.Input
 import java.lang.Exception
 
 class MainPageFragment : Fragment() {
