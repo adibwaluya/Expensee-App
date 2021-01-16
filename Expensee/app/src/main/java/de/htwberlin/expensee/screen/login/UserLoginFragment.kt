@@ -70,6 +70,7 @@ class UserLoginFragment : Fragment() {
     }
 
     private fun observeAuthenticationState() {
+
         viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
             when(authenticationState) {
                 UserLoginViewModel.AuthenticationState.AUTHENTICATED -> {

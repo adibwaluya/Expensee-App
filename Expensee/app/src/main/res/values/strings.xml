@@ -27,9 +27,13 @@
     <string name="shift_phrase">Manage your budget with the easiest approach</string>
     <string name="waren_buffet">Do not save what is left after spending, but spend what is left after saving.</string>
     <string name="saved">Save</string>
+    <string name="fact_type_expensee">Expensee</string>
 
     <!-- String methods -->
     <string name="addEuro">%1$d €</string>
     <string name="desc">Description</string>
     <string name="input_date">Input Date</string>
+
+    <!--Shared Preference Keys -->
+    <string name="preference_fact_type_key">fact_type_pref</string>
 </resources>

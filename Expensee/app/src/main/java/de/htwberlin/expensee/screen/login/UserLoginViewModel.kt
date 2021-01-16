@@ -1,13 +1,16 @@
 package de.htwberlin.expensee.screen.login
 
+import android.content.Context
+import android.preference.PreferenceManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
+import de.htwberlin.expensee.R
 import de.htwberlin.expensee.data.repository.UserObject
+import kotlin.random.Random
 
 class UserLoginViewModel() : ViewModel() {
 
-    // Added 10.12.2020
     enum class AuthenticationState {
         AUTHENTICATED, UNAUTHENTICATED, INVALID_AUTHENTICATED
     }
@@ -19,5 +22,6 @@ class UserLoginViewModel() : ViewModel() {
             AuthenticationState.UNAUTHENTICATED
         }
     }
+
 
 }
