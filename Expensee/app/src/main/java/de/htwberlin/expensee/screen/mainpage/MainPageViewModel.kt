@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.lang.StringBuilder
+import java.text.DecimalFormat
 
 class MainPageViewModel : ViewModel() {
     private val budgetCollectionRef = Firebase.firestore
@@ -51,8 +52,9 @@ class MainPageViewModel : ViewModel() {
 
         for (document in querySnapshot.documents) {
             val income = document.toObject<Input>()
+            val dec = DecimalFormat("#,##0.00")
             if (income != null) {
-                sb.insert(0, "[${income.date}] ${income.description} : ${income.amountMoney} € \n")
+                sb.insert(0, "[${income.date}] ${income.description} : ${dec.format(income.amountMoney)} € \n")
                 cs += income.amountMoney
             }
         }
@@ -70,18 +72,5 @@ class MainPageViewModel : ViewModel() {
             Log.d("CURRENT SALDO: ", _mDocRef.get().toString())
         }
     }
-    
-    // Written on 14.01.2020
-    // TODO: Move this to DeleteViewModel!
-    fun deletePerson(input: Input) = CoroutineScope(Dispatchers.IO).launch {
-        val inputQuery = budgetCollectionRef
-                .whereEqualTo("amountMoney", input.amountMoney)
-                .whereEqualTo("description", input.description)
-                .get()
-                .await()
 
-        for (document in inputQuery) {
-            budgetCollectionRef.document(document.id).delete().await()
-        }
-    }
 }

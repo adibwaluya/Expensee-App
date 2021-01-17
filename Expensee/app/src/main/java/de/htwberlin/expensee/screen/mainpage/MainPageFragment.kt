@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentMainPageBinding
 import java.lang.Exception
+import java.text.DecimalFormat
 
 class MainPageFragment : Fragment() {
 
@@ -40,7 +41,8 @@ class MainPageFragment : Fragment() {
         // LiveData Observers
         // For current saldo
         viewModel.saldo.observe(viewLifecycleOwner, Observer { currentSaldo ->
-            val spannableString = SpannableString(currentSaldo.toDouble().toString())
+            val dec = DecimalFormat("#,##0.00")
+            val spannableString = SpannableString(dec.format(currentSaldo))
             val mUnderlineSpan = UnderlineSpan()
             spannableString.setSpan(mUnderlineSpan, 0, spannableString.length, 0)
             binding.currentSaldoEt.text = "$spannableString €"
