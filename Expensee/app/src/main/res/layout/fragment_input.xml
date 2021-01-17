@@ -47,11 +47,12 @@
 
         <EditText
             android:id="@+id/transcationInfo"
-            android:layout_width="256dp"
-            android:layout_height="@dimen/size_fifty"
+            android:layout_width="225dp"
+            android:layout_height="48dp"
             android:layout_marginStart="@dimen/size_eighty"
-            android:layout_marginTop="@dimen/size_ten"
+            android:layout_marginTop="@dimen/size_twenty"
             android:layout_marginEnd="@dimen/size_eighty"
+            android:layout_gravity="center"
             android:background="@color/grey"
             android:fontFamily="@font/philosopher"
             android:textAlignment="center"
@@ -63,6 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_twenty"
             android:layout_marginStart="@dimen/size_eighty"
             android:fontFamily="@font/alike_angular"
             android:text="@string/input_date"
@@ -70,20 +72,22 @@
 
         <EditText
             android:id="@+id/Date_et"
-            android:layout_width="256dp"
-            android:layout_height="@dimen/size_twenty"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_ten"
             android:layout_marginStart="@dimen/size_eighty"
             android:layout_marginEnd="@dimen/size_eighty"
+            android:layout_gravity="center"
+            android:background="@color/grey"
             android:ems="10"
-            android:textIsSelectable="true"
-            android:text= "@{java.time.LocalDate.now().toString()}"
-            android:background="@color/grey" />
+            android:text="@{java.time.LocalDate.now().toString()}"
+            android:textIsSelectable="true" />
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/twohundred_fifty"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/size_twenty"
             android:text="@string/saved" />
 

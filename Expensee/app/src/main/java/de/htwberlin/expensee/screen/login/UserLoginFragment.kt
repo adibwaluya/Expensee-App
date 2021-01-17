@@ -115,16 +115,6 @@ class UserLoginFragment : Fragment() {
                         providers
                 ).build(), SIGN_IN_RESULT_CODE)
 
-        /*
-        if (viewModel.isOnline()) {
-
-        }
-        else if (!viewModel.isOnline()){
-            Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
-        }
-
-         */
-
     }
 
 }

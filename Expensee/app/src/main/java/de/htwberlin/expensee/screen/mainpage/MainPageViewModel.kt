@@ -59,7 +59,7 @@ class MainPageViewModel : ViewModel() {
             }
         }
         var currentSaldo = mutableMapOf<String, Double>()
-        currentSaldo["input"] = cs  //_saldo.toString().toDouble()
+        currentSaldo["input"] = cs
 
         withContext(Dispatchers.Main){  // Processes on main thread
             _inputData.value = sb.toString()
