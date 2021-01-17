@@ -33,7 +33,7 @@
         <action
             android:id="@+id/action_inputFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment"
-            app:enterAnim="@anim/fui_slide_out_left" />
+            app:enterAnim="@anim/fui_slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

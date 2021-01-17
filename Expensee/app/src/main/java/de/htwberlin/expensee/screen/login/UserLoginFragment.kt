@@ -1,16 +1,12 @@
 package de.htwberlin.expensee.screen.login
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -23,7 +19,6 @@ import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentLoginRegisterBinding
-import kotlin.math.log
 
 class UserLoginFragment : Fragment() {
 
@@ -69,7 +64,6 @@ class UserLoginFragment : Fragment() {
             } else {
                 // Sign in failed. If response is null the user cancelled the sign-in flow
                 Log.i(TAG, "Sign in unsuccessful ${response?.error?.errorCode}")
-                // Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -93,7 +87,6 @@ class UserLoginFragment : Fragment() {
 
                     }
 
-                    //Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
                 }
 
                 else -> {
@@ -126,8 +119,8 @@ class UserLoginFragment : Fragment() {
         if (viewModel.isOnline()) {
 
         }
-        else {
-            //Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
+        else if (!viewModel.isOnline()){
+            Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
         }
 
          */

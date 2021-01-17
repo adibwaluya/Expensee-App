@@ -91,4 +91,5 @@ class MainPageFragment : Fragment() {
                 onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
+
 }
