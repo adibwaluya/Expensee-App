@@ -50,7 +50,6 @@ class InputFragment : Fragment() {
             else {
                 try {
                     val input = Input(amountInput, descInfo, dateInput)
-                    Log.d(TAG, "Data class Input created!")
                     viewModel.vmSaveInput(input)
                     Toast.makeText(activity, "Input saved!", Toast.LENGTH_LONG).show()
                 }

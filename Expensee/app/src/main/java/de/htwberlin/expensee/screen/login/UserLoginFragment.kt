@@ -1,7 +1,10 @@
 package de.htwberlin.expensee.screen.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,6 +69,7 @@ class UserLoginFragment : Fragment() {
             } else {
                 // Sign in failed. If response is null the user cancelled the sign-in flow
                 Log.i(TAG, "Sign in unsuccessful ${response?.error?.errorCode}")
+                // Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -89,7 +93,7 @@ class UserLoginFragment : Fragment() {
 
                     }
 
-                    Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
                 }
 
                 else -> {
@@ -109,21 +113,24 @@ class UserLoginFragment : Fragment() {
     private fun launchSignInFlow() {
 
         val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build()
+                AuthUI.IdpConfig.EmailBuilder().build()
         )
 
-        try {
-            // Create and launch sign-in intent
-            startActivityForResult(
-                    AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
-                            providers
-                    ).build(), SIGN_IN_RESULT_CODE
-            )
+        // Create and launch sign-in intent
+        startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
+                        providers
+                ).build(), SIGN_IN_RESULT_CODE)
 
-        } catch (e: Exception) {
-            Log.e(TAG, e.toString())
-            Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
+        /*
+        if (viewModel.isOnline()) {
+
         }
+        else {
+            //Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
+        }
+
+         */
 
     }
 

@@ -73,18 +73,6 @@ class MainPageFragment : Fragment() {
             view.findNavController().navigate(R.id.action_mainPageFragment_to_inputFragment)
         }
 
-        /* // TODO: Implemented soon!
-        binding.fabDelete.setOnClickListener { view: View ->
-            try {
-                viewModel.deletePerson()
-            } catch (e: Exception) {
-                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
-            }
-
-        }
-
-         */
-
         // Retrieve data from database everytime the fragment is created
         viewModel.vmRetrieveInput()
 

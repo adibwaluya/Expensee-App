@@ -6,7 +6,6 @@ import com.google.firebase.auth.FirebaseUser
 
 class UserObject : LiveData<FirebaseUser?>() {
 
-    // Added 10.12.2020
     private val firebaseAuth = FirebaseAuth.getInstance()
 
     private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
