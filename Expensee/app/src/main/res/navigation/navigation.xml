@@ -22,7 +22,8 @@
         tools:layout="@layout/fragment_main_page">
         <action
             android:id="@+id/action_mainPageFragment_to_inputFragment"
-            app:destination="@id/inputFragment" />
+            app:destination="@id/inputFragment"
+            app:enterAnim="@anim/fui_slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/inputFragment"
@@ -31,7 +32,8 @@
         tools:layout="@layout/fragment_input" >
         <action
             android:id="@+id/action_inputFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/mainPageFragment"
+            app:enterAnim="@anim/fui_slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -41,6 +43,7 @@
         <action
             android:id="@+id/action_aboutFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment"
+            app:enterAnim="@anim/fragment_open_enter"
             app:popUpTo="@id/mainPageFragment" />
     </fragment>
 </navigation>

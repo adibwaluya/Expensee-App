@@ -81,7 +81,6 @@ class UserLoginFragment : Fragment() {
                     }
                     binding.expenseeLogo.isVisible = false
                     binding.expenseePhrase.isVisible = false
-
                     binding.buffetPhrase.isVisible = true
                     binding.openDataButton.isVisible = true
                     binding.openDataButton.setOnClickListener { view: View ->
