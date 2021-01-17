@@ -20,18 +20,4 @@ class UserObject : LiveData<FirebaseUser?>() {
     override fun onInactive() {
         firebaseAuth.removeAuthStateListener { authStateListener }
     }
-
-    /*
-    var userName: String? = null
-    var userEmail: String? = null
-    var userPassword: String? = null
-
-    @Exclude
-    var isAuthenticated = false
-    @Exclude
-    var isNew = false
-    @Exclude
-    var isCreated = false
-
-     */
 }

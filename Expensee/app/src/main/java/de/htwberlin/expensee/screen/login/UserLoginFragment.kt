@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -19,10 +20,10 @@ import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import de.htwberlin.expensee.R
 import de.htwberlin.expensee.databinding.FragmentLoginRegisterBinding
+import kotlin.math.log
 
 class UserLoginFragment : Fragment() {
 
-    // Added 10.12.2020
     companion object {
         const val TAG = "LoginFragment"
         const val SIGN_IN_RESULT_CODE = 1001
@@ -87,6 +88,8 @@ class UserLoginFragment : Fragment() {
                         view.findNavController().navigate(R.id.action_userLoginFragment_to_mainPageFragment)
 
                     }
+
+                    Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
                 }
 
                 else -> {
@@ -104,16 +107,24 @@ class UserLoginFragment : Fragment() {
     }
 
     private fun launchSignInFlow() {
+
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build()
         )
 
-        // Create and launch sign-in intent
-        startActivityForResult(
-            AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
-                providers
-            ).build(), SIGN_IN_RESULT_CODE
-        )
+        try {
+            // Create and launch sign-in intent
+            startActivityForResult(
+                    AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
+                            providers
+                    ).build(), SIGN_IN_RESULT_CODE
+            )
+
+        } catch (e: Exception) {
+            Log.e(TAG, e.toString())
+            Toast.makeText(activity, "No Internet Connection!", Toast.LENGTH_LONG).show()
+        }
+
     }
 
 }
