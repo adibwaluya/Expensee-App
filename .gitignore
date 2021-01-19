@@ -30,7 +30,7 @@ hs_err_pid*
 #
 
 # Built application files
-*.apk
+#*.apk
 *.ap_
 *.aab
 
